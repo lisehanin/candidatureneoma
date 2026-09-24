@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lise Hanin — Candidature Directeur(trice) Événementiel, NEOMA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f4;
+    --panel: #ffffff;
+    --panel-2: #f1efe8;
+    --ink: #151412;
+    --ink-soft: #5c584f;
+    --line: #e3ded2;
+    --accent: #5b3f7a;
+    --accent-ink: #fff;
+    --accent-soft: rgba(91,63,122,.08);
+    --gold: #a85c8c;
+    --gold-soft: rgba(168,92,140,.13);
+    --emerald: #a85c8c;
+    --emerald-soft: rgba(168,92,140,.13);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #171420; --panel: #201c2b; --panel-2: #292435; --ink: #f0ece8; --ink-soft: #b3a9be;
+      --line: #362f45; --accent: #b48fd6; --accent-soft: rgba(180,143,214,.16);
+      --gold: #d99cc0; --gold-soft: rgba(217,156,192,.14); --emerald: #d99cc0; --emerald-soft: rgba(217,156,192,.14);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #171420; --panel: #201c2b; --panel-2: #292435; --ink: #f0ece8; --ink-soft: #b3a9be;
+    --line: #362f45; --accent: #b48fd6; --accent-soft: rgba(180,143,214,.16);
+    --gold: #d99cc0; --gold-soft: rgba(217,156,192,.14); --emerald: #d99cc0; --emerald-soft: rgba(217,156,192,.14);
+  }
+  /* Per-tab background identity — alternance violet doux / blanc, façon NEOMA */
+  body[data-active-tab="profil"] { --bg: #f1ecf7; --panel: #ffffff; }
+  body[data-active-tab="competences"] { --bg: #ffffff; --panel: #f8f6fb; }
+  body[data-active-tab="pourquoi"] { --bg: #f1ecf7; --panel: #ffffff; }
+  body[data-active-tab="reims"] { --bg: #ffffff; --panel: #f8f6fb; }
+  body[data-active-tab="informations"] { --bg: #f1ecf7; --panel: #ffffff; }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    line-height: 1.65;
+    background-image: radial-gradient(ellipse 900px 500px at 10% -10%, var(--accent-soft), transparent 60%);
+    background-attachment: fixed;
+    transition: background-color .4s ease, color .4s ease;
+  }
+  .card, .featured-card, .chip-card, .act-card, form.contact, nav.tabs, .subnav button {
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background-color .4s ease, color .4s ease;
+  }
+  body::before {
+    content: ""; position: fixed; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--ink), var(--accent));
+    background-size: 220% 100%; animation: sweep 8s linear infinite; z-index: 50;
+  }
+  @keyframes sweep { from { background-position: 0% 0; } to { background-position: 220% 0; } }
+  h1, h2, h3 { font-family: Georgia, "Times New Roman", Times, serif; }
+  h1.display, .concept-hero h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 800; letter-spacing: -.01em; }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 8px 24px 100px; }
+  .icon { width: 20px; height: 20px; flex-shrink: 0; stroke: currentColor; fill: none; stroke-width: 1.6; }
+
+  header.hero { padding: 52px 24px 0; max-width: 780px; margin: 0 auto; }
+  .kicker { display: flex; align-items: center; gap: 14px; font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 20px; font-weight: 600; font-family: "Work Sans", sans-serif; }
+  .kicker .line { flex: 1; height: 1px; background: var(--line); }
+  .kicker .num { color: var(--accent); font-weight: 700; }
+  .placeholder-tag { font-family: "Work Sans", sans-serif; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); padding: 4px 11px; border-radius: 20px; font-weight: 600; margin-bottom: 18px; display: inline-block; }
+
+  h1.display { font-size: clamp(42px, 7vw, 68px); margin: 0 0 20px; line-height: .95; }
+  .pitch { font-size: 19px; margin: 0 0 24px; max-width: 620px; }
+  .pitch strong { color: var(--accent); font-weight: 700; }
+  .hero-rule { height: 1px; background: linear-gradient(90deg, var(--line), transparent); margin: 0 0 26px; }
+
+  .stat-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; font-family: "Work Sans", sans-serif; }
+  .stat-chip { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--ink); background: var(--panel); border: 1px solid var(--line); padding: 7px 13px; border-radius: 20px; }
+  .stat-chip .icon { width: 15px; height: 15px; color: var(--accent); }
+
+  nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 10; display: flex; gap: 2px; overflow-x: auto; border-bottom: 1px solid var(--line); padding: 4px 24px 0; max-width: 940px; margin: 28px auto 0; scrollbar-width: none; font-family: "Work Sans", sans-serif; }
+  nav.tabs::-webkit-scrollbar { display: none; }
+  nav.tabs button { font-family: "Work Sans", sans-serif; font-size: 13.5px; font-weight: 600; color: var(--ink-soft); background: none; border: none; padding: 16px 16px; cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; text-transform: uppercase; letter-spacing: .04em; transition: color .2s, border-color .2s; }
+  nav.tabs button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+  nav.tabs button:hover { color: var(--ink); }
+
+  section.panel { display: none; }
+  section.panel.active { display: block; animation: reveal .35s cubic-bezier(.2,.7,.3,1); }
+  @keyframes reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  h2.section-title { font-size: 30px; font-weight: 700; margin: 28px 0 6px; }
+  .section-sub { color: var(--ink-soft); font-size: 15px; margin: 0 0 26px; font-family: "Work Sans", sans-serif; }
+  h3.group-label { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--emerald); font-weight: 700; font-family: "Work Sans", sans-serif; margin: 36px 0 14px; display: flex; align-items: center; gap: 10px; }
+  h3.group-label:first-child { margin-top: 0; }
+  h3.group-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+  .subnav { display: flex; gap: 8px; margin-bottom: 26px; flex-wrap: wrap; font-family: "Work Sans", sans-serif; }
+  .subnav button { font-family: "Work Sans", sans-serif; font-size: 13px; font-weight: 600; color: var(--ink-soft); background: var(--panel); border: 1px solid var(--line); padding: 9px 16px; border-radius: 30px; cursor: pointer; transition: background .2s, color .2s, border-color .2s; text-transform: uppercase; letter-spacing: .03em; }
+  .subnav button[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .subpanel { display: none; }
+  .subpanel.active { display: block; animation: reveal .3s ease; }
+
+  .featured-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 8px; }
+  @media (max-width: 700px) { .featured-grid { grid-template-columns: 1fr; } }
+  .featured-card, .chip-card, .card, .act-card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+  .featured-card:hover, .chip-card:hover, .card:hover, .act-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(20,15,10,.10); }
+  .featured-card { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 30px; position: relative; overflow: hidden; max-width: 720px; }
+  .featured-card:hover { border-color: var(--accent); }
+  .featured-card::before { content: ""; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: var(--accent); }
+  .featured-card h3 { font-size: 22px; font-weight: 700; margin: 0 0 16px; }
+  .featured-card h4 { font-size: 12.5px; font-weight: 700; margin: 16px 0 4px; color: var(--accent); text-transform: uppercase; letter-spacing: .05em; font-family: "Work Sans", sans-serif; }
+  .featured-card h4:first-of-type { margin-top: 4px; }
+  .featured-card p { font-size: 16px; color: var(--ink); margin: 0 0 8px; }
+
+  .chip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 620px) { .chip-grid { grid-template-columns: 1fr; } }
+  .chip-card { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 24px; }
+  .chip-card h4 { margin: 0 0 10px; font-size: 17px; font-weight: 700; color: var(--accent); }
+  .chip-card p { margin: 0 0 8px; font-size: 15px; color: var(--ink); }
+
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 26px; margin-bottom: 14px; }
+  .card h3 { font-size: 20px; font-weight: 700; margin: 0 0 10px; }
+  .card p { margin: 0 0 8px; font-size: 15.5px; }
+  .card p:last-child { margin-bottom: 0; }
+  .card.highlight { border-left: 4px solid var(--accent); border-color: var(--line); background: var(--panel); }
+  .placeholder { color: var(--accent); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 620px) { .two-col { grid-template-columns: 1fr; } }
+  ul.clean { margin: 8px 0 0; padding-left: 18px; }
+  ul.clean li { margin-bottom: 6px; font-size: 15px; }
+
+  .timeline { border-left: 2px solid var(--line); margin-left: 8px; padding-left: 28px; }
+  .timeline .step { position: relative; padding-bottom: 30px; }
+  .timeline .step:last-child { padding-bottom: 0; }
+  .timeline .step::before { content: ""; position: absolute; left: -34px; top: 5px; width: 11px; height: 11px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .timeline .step .when { font-family: "Work Sans", sans-serif; font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--gold); font-weight: 700; margin-bottom: 4px; }
+  .timeline .step h3 { font-size: 18px; font-weight: 700; margin: 0 0 6px; }
+  .timeline .step p { font-size: 15px; margin: 0; color: var(--ink); }
+
+  .concept-hero { background: linear-gradient(155deg, var(--accent) 0%, #201336 100%); border-radius: 6px; padding: 40px 32px; color: #f7f2fb; margin-bottom: 26px; position: relative; overflow: hidden; }
+  .concept-hero .eyebrow { font-family: "Work Sans", sans-serif; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .85; margin-bottom: 10px; }
+  .concept-hero h3 { font-size: clamp(28px, 5vw, 42px); margin: 0 0 12px; color: #fff; text-transform: uppercase; }
+  .concept-hero p { font-size: 16px; margin: 0; opacity: .96; max-width: 580px; }
+
+  .acts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 22px 0 30px; }
+  @media (max-width: 760px) { .acts { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .acts { grid-template-columns: 1fr; } }
+  .act-card { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 18px; }
+  .act-card .act-num { font-family: "Work Sans", sans-serif; font-size: 12px; color: var(--accent); font-weight: 700; letter-spacing: .06em; margin-bottom: 6px; }
+  .act-card h4 { font-size: 19px; font-weight: 700; margin: 0 0 6px; }
+  .act-card p { font-size: 13.5px; color: var(--ink-soft); margin: 0; font-family: "Work Sans", sans-serif; }
+
+  table.sched { width: 100%; border-collapse: collapse; margin-bottom: 28px; font-size: 14.5px; }
+  table.sched th { text-align: left; font-family: "Work Sans", sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--emerald); padding: 0 10px 10px; border-bottom: 1px solid var(--line); }
+  table.sched td { padding: 13px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.sched tr:last-child td { border-bottom: none; }
+  table.sched td.time { color: var(--accent); font-weight: 700; white-space: nowrap; }
+  .wrap-scroll { overflow-x: auto; }
+
+  .cdc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 10px; }
+  @media (max-width: 620px) { .cdc-grid { grid-template-columns: 1fr; } }
+  .cdc-card { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 18px 20px; }
+  .cdc-card h4 { margin: 0 0 8px; font-size: 14px; font-weight: 700; color: var(--accent); font-family: "Work Sans", sans-serif; }
+  .cdc-card ul { margin: 0; padding-left: 16px; }
+  .cdc-card li { font-size: 14px; margin-bottom: 5px; color: var(--ink); }
+
+  table.retro { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.retro th { text-align: left; font-family: "Work Sans", sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--emerald); padding: 0 10px 10px; border-bottom: 1px solid var(--line); }
+  table.retro td { padding: 11px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.retro td.jalon { font-weight: 700; white-space: nowrap; color: var(--ink); }
+  table.retro td ul { margin: 0; padding-left: 14px; }
+  table.retro td li { margin-bottom: 3px; }
+  .tag-j { font-family: "Work Sans", sans-serif; color: var(--accent); font-weight: 700; font-size: 11px; }
+  .tag-s { font-family: "Work Sans", sans-serif; color: var(--gold); font-weight: 700; font-size: 11px; }
+
+  form.contact { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 28px; }
+  .field { margin-bottom: 15px; }
+  .field label { display: block; font-family: "Work Sans", sans-serif; font-size: 12.5px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
+  .field .value { font-size: 16px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .field .value a { color: var(--ink); }
+
+  footer { max-width: 940px; margin: 0 auto; padding: 20px 24px 48px; color: var(--ink-soft); font-size: 12.5px; font-family: "Work Sans", sans-serif; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="placeholder-tag">Brouillon — prêt à affiner ensemble</span>
+  <div class="kicker"><span class="line"></span><span class="num">Nº 01</span><span>Candidature — Directeur·trice Événementiel, NEOMA</span><span class="line"></span></div>
+  <h1 class="display">Lise Hanin</h1>
+  <p class="pitch">Chef de projet depuis 5 ans. <strong>Agile, fonceuse, créative</strong> — et surtout, une envie d'événementiel qui traverse absolument tout ce que je fais, du pro au perso.</p>
+  <div class="hero-rule"></div>
+  <div class="stat-row">
+    <span class="stat-chip"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg>Co-management d'une équipe de 15 pers.</span>
+    <span class="stat-chip"><svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>4 instances pilotées</span>
+    <span class="stat-chip"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9z"/></svg>3 langues</span>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button role="tab" aria-selected="true" data-tab="profil">Qui je suis</button>
+  <button role="tab" aria-selected="false" data-tab="competences">Compétences</button>
+  <button role="tab" aria-selected="false" data-tab="pourquoi">Pourquoi NEOMA</button>
+  <button role="tab" aria-selected="false" data-tab="reims">Vision Reims</button>
+  <button role="tab" aria-selected="false" data-tab="informations">Informations</button>
+</nav>
+
+<div class="wrap">
+
+  <!-- PROFIL -->
+  <section class="panel active" id="profil">
+    <h2 class="section-title">Qui je suis, pourquoi maintenant</h2>
+    <p class="section-sub">Pas une bifurcation. Un aboutissement, tout simplement.</p>
+
+    <div class="subnav-group">
+      <div class="subnav" role="tablist">
+        <button role="tab" aria-selected="true" data-sub="profil-parcours">Mon parcours</button>
+        <button role="tab" aria-selected="false" data-sub="profil-pourquoi">Pourquoi maintenant</button>
+        <button role="tab" aria-selected="false" data-sub="profil-historique">Historique</button>
+      </div>
+
+      <div class="subpanel active" id="profil-parcours">
+        <div class="two-col">
+          <div class="card">
+            <h3>Depuis oct. 2023 — Chef de projets, Cerfrance</h3>
+            <p>Pilotage de projets transversaux (stratégie immobilière, évolution des compétences, changement de logiciel interne). Animation régulière du CODIR, Comité de pilotage, CA et CSE.</p>
+          </div>
+          <div class="card">
+            <h3>2026 — Madeleine <span style="color:var(--ink-soft); font-weight:400; font-size:12.5px; font-family:'Work Sans',sans-serif;">ma marque</span></h3>
+            <p>Organisation d'événements et de voyages sur mesure pour des particuliers, budget maîtrisé, carnet de route pensé pour que le client soit autonome le jour J. Déjà lancée — l'ambition est de la faire grandir.</p>
+          </div>
+          <div class="card">
+            <h3>Bonnaire Traiteur <span style="color:var(--ink-soft); font-weight:400; font-size:12.5px; font-family:'Work Sans',sans-serif;">fév.–oct. 2023</span></h3>
+            <p>Devis, négociation client/prestataires, coordination cuisine/matériel/personnel. Mission Armada de Rouen 2023.</p>
+          </div>
+          <div class="card">
+            <h3>Urban Connect <span style="color:var(--ink-soft); font-weight:400; font-size:12.5px; font-family:'Work Sans',sans-serif;">2022</span></h3>
+            <p>Cahier des charges et direction artistique d'un tiers-lieu culturel, co-rédigés avec la Mairie de Louviers.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subpanel" id="profil-pourquoi">
+        <div class="card highlight">
+          <h3>Chef de projet depuis 5 ans</h3>
+          <p>Agile, fonceuse, créative.</p>
+          <p>Une ambition de responsabilité, l'expression de ma créativité, une projection évidente dans l'événementiel : à titre personnel avec Madeleine (organisation de 10 événements de 6 à 20 personnes sur 2026) ; à titre associatif, mes débuts à l'EM Normandie (responsabilités d'organisation d'événements en tant que BDE jusqu'à 200 personnes, co-management avec la Présidence d'une équipe de 15 personnes constituée de 3 pôles + support) ; à titre professionnel, lors de mon expérience chez Bonnaire Traiteur (marquée par l'organisation de plusieurs événements professionnels sur les bateaux de l'Armada 2023, coordination de 3 pôles de services).</p>
+          <p>Ce poste est une évidence pour la suite de mon parcours professionnel, dans la mesure où il représente exactement ce que j'aime et souhaite concrétiser pour la suite de ma carrière.</p>
+        </div>
+        <div class="card">
+          <h3>Ma vision à moyen-long terme</h3>
+          <p>J'aspire à élargir mes compétences en management grâce à l'organisation d'événements. Mon objectif est de faire rayonner en créant des événements sur mesure, adaptés aux besoins, tout en utilisant la force du réseau.</p>
+          <p>Concrètement, il s'agit de faire grandir Madeleine, ma marque : j'aide déjà des particuliers à organiser leurs événements, ce qui est très concrètement de la gestion de projet sur mesure appliquée à l'événementiel. Pour que ce soit vraiment concret d'ici une dizaine d'années, il me faut du réseau et des compétences que je n'ai pas encore — et un poste comme celui que propose NEOMA est une valeur nécessaire dans cette équation.</p>
+        </div>
+      </div>
+
+      <div class="subpanel" id="profil-historique">
+        <div class="timeline">
+          <div class="step">
+            <div class="when">Avant 2022</div>
+            <h3>Formation</h3>
+            <p>Classe préparatoire ECE, Lycée Flaubert. Puis Master Programme Grande École, EM Normandie Business School — spécialité Marketing & Stratégie.</p>
+          </div>
+          <div class="step">
+            <div class="when">Sept. 2019 – Déc. 2020</div>
+            <h3>Engagements bénévoles</h3>
+            <p>Conseillère Régionale Jeune (Région Normandie) : étude et présentation de projets d'aménagement à destination des jeunes en Assemblée Plénière, dans le cadre du mandat de M. Morin. En parallèle, Trésorière du BDE (EM Normandie) : pilotage de budgets prévisionnels, gestion de l'équilibre financier, reporting mensuel à la direction.</p>
+          </div>
+          <div class="step">
+            <div class="when">Janv. 2022 – Déc. 2022</div>
+            <h3>Chef de projet, Urban Connect (CDD)</h3>
+            <p>Analyse et étude de marché pour la création d'un tiers-lieu culturel à Louviers en Normandie. Définition de la structure d'accueil, élaboration du cahier des charges, étude de faisabilité, communication du projet auprès des acteurs institutionnels et du tissu local.</p>
+          </div>
+          <div class="step">
+            <div class="when">Fév. 2023 – Oct. 2023</div>
+            <h3>Chef de projets, Bonnaire Traiteur (CDI)</h3>
+            <p>Réalisation de devis sur mesure au cahier des charges du client, négociation commerciale et contractualisation avec le client puis avec les prestataires. Coordination logistique des services impliqués (cuisine, matériel, personnel). Mission réalisée notamment dans le cadre de l'Armada de Rouen 2023.</p>
+          </div>
+          <div class="step">
+            <div class="when">Depuis Oct. 2023</div>
+            <h3>Chef de projets, Cerfrance (CDI)</h3>
+            <p>Pilotage de projets transversaux (stratégie immobilière, évolution des compétences, changement de logiciel interne). Préparation et animation des instances (Comité de direction, Comité de pilotage, Conseil d'Administration, CSE).</p>
+          </div>
+          <div class="step">
+            <div class="when">2026</div>
+            <h3>Madeleine</h3>
+            <p>Lancement de ma marque : j'aide des particuliers à organiser leurs événements et leurs voyages sur mesure. 10 événements de 6 à 20 personnes déjà organisés sur l'année.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETENCES -->
+  <section class="panel" id="competences">
+    <h2 class="section-title">Compétences</h2>
+    <p class="section-sub">Tout ce que ces cinq dernières années m'ont appris, poste par poste.</p>
+
+    <div class="subnav-group">
+      <div class="subnav" role="tablist">
+        <button role="tab" aria-selected="true" data-sub="c1">Pilotage & sens politique</button>
+        <button role="tab" aria-selected="false" data-sub="c2">Production & coordination</button>
+        <button role="tab" aria-selected="false" data-sub="c3">Rayonnement & partenaires</button>
+        <button role="tab" aria-selected="false" data-sub="c4">Budget & contractualisation</button>
+        <button role="tab" aria-selected="false" data-sub="c5">IA, outils & langues</button>
+      </div>
+
+      <div class="subpanel active" id="c1">
+        <div class="featured-card">
+          <h3>Pilotage d'instances & sens politique</h3>
+          <h4>Cerfrance</h4>
+          <p>Animation d'instances de communication projet (Comité de pilotage, Comité de direction, Conseil d'Administration, CSE) et adaptation du langage et des supports dédiés.</p>
+          <p>Défense du projet auprès des instances décisionnelles, explication des raisonnements de l'écriture du projet (besoins/risques versus solutions/impacts). Management indirect dans l'instance comité de pilotage : demandes de suivi de production, gestion des émotions lors de la prise de décision, prise de hauteur et recentralisation des sujets, gestion du temps (adaptation des récurrences aux besoins du projet, agilité pour la gestion des imprévus et/ou la création de confort).</p>
+          <h4>Urban Connect</h4>
+          <p>Participation à diverses instances apolitiques, associatives, événementielles, dans l'objectif de rencontrer le tissu local de Louviers ; échanges sur le projet avec des personnalités variées dans le but de promouvoir et rassembler : défense du projet, de ses intérêts, de ses objectifs et de ses impacts.</p>
+        </div>
+      </div>
+
+      <div class="subpanel" id="c2">
+        <div class="featured-card">
+          <h3>Production & coordination</h3>
+          <h4>Cerfrance</h4>
+          <p>Coordination et communication auprès des équipes métiers au service des livrables du projet : organisation et animation d'ateliers à buts divers, transmission des informations nécessaires au bon déploiement du projet (préparation puis animation en Journée managers, en réunion d'agences, auprès des équipes métiers ciblées), production de la ressource nécessaire à la prise de décision (en groupe de travail avec les ressources ciblées, en réunion interne afin de coordonner les visions stratégiques des services).</p>
+          <h4>Bonnaire Traiteur</h4>
+          <p>Coordination de la préparation de la production et des équipes en amont des événements (cuisine, service, logistique, lieux), en tenant compte des contraintes client et du lieu de réception ; coordination logistique le jour de l'événement, en tenant compte des contraintes inhérentes au contexte (météo, absence, changement d'effectif...).</p>
+          <h4>Madeleine</h4>
+          <p>Organisation d'événements à l'étranger pour des particuliers, à l'occasion d'événements ponctuels : définition du cahier des charges en lien avec le groupe, benchmark des prestataires adaptés aux diverses contraintes, proposition et choix par les clients, réservation et paiement des prestataires, gestion des imprévus (annulations, changements d'effectif, changements d'horaire de vol...), écriture d'un carnet de route de l'événement pour que le client soit autonome le jour J.</p>
+        </div>
+      </div>
+
+      <div class="subpanel" id="c3">
+        <div class="featured-card">
+          <h3>Rayonnement institutionnel & partenaires</h3>
+          <h4>Urban Connect</h4>
+          <p>Rédaction du cahier des charges et projection de la direction artistique — commande d'un projet de tiers-lieu culturel co-rédigée entre l'entreprise et la Mairie de Louviers — et rencontre de personnalités représentant des instances au profil correspondant à cette direction artistique (producteurs locaux, artistes, partenariats avec d'autres tiers-lieux, organismes de financement).</p>
+          <h4>Cerfrance</h4>
+          <p>Participation à des salons Numérique Responsable et IA, dans l'objectif de projeter une vision stratégique d'entreprise ambitieuse et ancrée dans le présent.</p>
+          <h4>Bonnaire Traiteur</h4>
+          <p>Rencontre et visite des lieux de partenariat de l'entreprise, recherche de nouveaux lieux pour contractualiser et établir une relation d'échange commercial.</p>
+        </div>
+      </div>
+
+      <div class="subpanel" id="c4">
+        <div class="featured-card">
+          <h3>Budget & contractualisation</h3>
+          <h4>Bonnaire Traiteur</h4>
+          <p>Prise de cahier des charges des clients (B2B) pour leurs événements ponctuels, réalisation d'un devis adapté valorisant le savoir-faire de l'entreprise (proposition d'un devis répondant à la demande du client, avec des annexes optionnelles en lien avec les nouveautés de l'entreprise), enquête de satisfaction du client en aval de l'événement (prise en compte des retours et anticipation de futurs événements).</p>
+          <h4>Madeleine</h4>
+          <p>Adaptation du projet au budget du client, élaboration d'une proposition en lien avec ses besoins et ses contraintes — budget maximum 5k€.</p>
+          <h4>BDE EM Normandie</h4>
+          <p>Écriture d'un prévisionnel budgétaire annuel sur la base d'un budget donné, présentation et validation du budget prévisionnel en direction, répartition du budget par pôle, prévisionnel et suivi des dépenses pour chaque événement, mensuellement et au global sur l'année — budget maximum 20k€.</p>
+        </div>
+      </div>
+
+      <div class="subpanel" id="c5">
+        <div class="chip-grid">
+          <div class="chip-card">
+            <h4>IA & outils de pilotage</h4>
+            <p><strong>Cerfrance</strong> — Création d'outils sur mesure au service des besoins de projets : sites internet adaptés (présentation de l'évolution RH sur les prochaines années — nouveaux profils, compétences associées, critères d'évaluation, cartographie actuelle des collaborateurs et leur projection), outil de suivi de la migration du logiciel de paie interne à 3 interfaces (remplissage par le métier, interface de gestion pour les responsables d'équipe, dashboard de suivi projet). Suivi de production mené sur Monday.</p>
+            <p><strong>Madeleine</strong> — Carnets de route présentés sous forme de site internet accessible sur mobile, avec les onglets nécessaires à l'organisation (Vol, Logement, Activités, Informations pratiques), centralisant l'ensemble des informations indispensables : cartes d'embarquement, code de réservation, liens Google Maps vers les adresses de rendez-vous, numéros de téléphone...</p>
+          </div>
+          <div class="chip-card">
+            <h4>Langues</h4>
+            <p>Français : natif. Anglais : courant (TOEIC 810/990). Espagnol : B2 certifié. Mandarin : bases d'introduction et notions culturelles.</p>
+            <p>Aucune appréhension à l'idée de présenter un projet dans une langue étrangère, anglais ou espagnol.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POURQUOI NEOMA -->
+  <section class="panel" id="pourquoi">
+    <h2 class="section-title">Pourquoi NEOMA</h2>
+    <p class="section-sub">Pas un poste comme un autre — une école que je regarde grandir depuis mes années prépa.</p>
+
+    <div class="subnav-group">
+      <div class="subnav" role="tablist">
+        <button role="tab" aria-selected="true" data-sub="pourquoi-attire">Ce qui m'attire</button>
+        <button role="tab" aria-selected="false" data-sub="pourquoi-ecole">Une école qui monte</button>
+      </div>
+
+      <div class="subpanel active" id="pourquoi-attire">
+        <div class="two-col">
+          <div class="card">
+            <h3>L'ouverture internationale</h3>
+            <p>C'est par ailleurs un élément clé qui a poussé ma candidature : les opportunités, grâce à cette dynamique, se multiplient et accentuent le rayonnement de l'école.</p>
+          </div>
+          <div class="card">
+            <h3>L'ouverture technologique et l'IA</h3>
+            <p>Enfin, l'ouverture technologique, axée vers l'innovation et l'intelligence artificielle, est une condition sine qua non à ma candidature. J'utilise aujourd'hui beaucoup les IA au service de mes projets personnels et professionnels. Le management d'une IA et l'humanisation de son travail sont des compétences au service de l'efficacité et de l'agilité que je souhaite continuer d'approfondir dans la suite de ma carrière.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subpanel" id="pourquoi-ecole">
+        <div class="card highlight">
+          <h3>Un univers dynamique</h3>
+          <p>L'environnement école de commerce est un univers dynamique, dans lequel on est toujours obligé de surfer sur les tendances et les nouveautés. L'attractivité et le rayonnement de l'école sont les points clés de sa réussite, au travers de plusieurs groupes de personnalités qui reçoivent et apportent chacun leur vision : les étudiants, les salariés, les intervenants, les partenaires, les alumnis.</p>
+        </div>
+        <div class="card">
+          <h3>Une école ambitieuse, vue de ma fenêtre</h3>
+          <p>NEOMA est une école ambitieuse. Vue de ma fenêtre, l'école a gagné 2 places au classement SIGEM depuis que j'ai passé mes concours écrits de prépa, et le nombre d'étudiants a augmenté dans le même temps. Cette croissance réalisée est l'un des critères attractifs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REIMS -->
+  <section class="panel" id="reims">
+    <h2 class="section-title">Mise en pratique — Vision Inauguration campus de Reims</h2>
+    <p class="section-sub">Voici le projet que je veux porter — pas un exercice de style, une vraie envie.</p>
+
+    <div class="concept-hero">
+      <div class="eyebrow">Concept directeur</div>
+      <h3>La Traversée</h3>
+      <p>Les invités ne visitent pas un bâtiment : ils traversent physiquement l'histoire de NEOMA pour arriver dans son avenir. Le parcours du campus devient la ligne du temps de l'école, en quatre temps : <strong>Le Chemin</strong> (l'histoire), <strong>Le Seuil</strong> (la bascule), <strong>L'Horizon</strong> (ce que le campus permet), <strong>La Trace</strong> (ce qu'on en garde).</p>
+    </div>
+
+    <div class="acts">
+      <div class="act-card"><div class="act-num">I</div><h4>Le Chemin</h4><p>L'histoire de NEOMA, racontée en parcours.</p></div>
+      <div class="act-card"><div class="act-num">II</div><h4>Le Seuil</h4><p>La bascule, vécue ensemble.</p></div>
+      <div class="act-card"><div class="act-num">III</div><h4>L'Horizon</h4><p>Ce que le campus va permettre.</p></div>
+      <div class="act-card"><div class="act-num">IV</div><h4>La Trace</h4><p>Ce qu'on en garde, après.</p></div>
+    </div>
+
+    <div class="subnav-group">
+      <div class="subnav" role="tablist">
+        <button role="tab" aria-selected="true" data-sub="journee">La Journée</button>
+        <button role="tab" aria-selected="false" data-sub="soiree">La Soirée</button>
+        <button role="tab" aria-selected="false" data-sub="retro">Rétroplanning</button>
+      </div>
+
+      <div class="subpanel active" id="journee">
+        <h3 class="group-label">Déroulé horaire</h3>
+        <div class="wrap-scroll">
+          <table class="sched">
+            <tr><th>Horaire</th><th>Séquence</th><th>Ce qui se joue</th></tr>
+            <tr><td class="time">9h00</td><td>Ouverture des portes</td><td>Accueil scolaire, café/viennoiseries, remise du plan-parcours</td></tr>
+            <tr><td class="time">9h30–12h30</td><td>Le Chemin — visites guidées</td><td>Groupes de ~20, créneaux de 30 min ; bornes interactives, archives, voix d'alumni</td></tr>
+            <tr><td class="time">10h30</td><td>Démonstration du Seuil</td><td>Activation courte en avant-première, devant les premiers groupes</td></tr>
+            <tr><td class="time">12h30–14h00</td><td>Pause déjeuner</td><td>Corner traiteur convivial, en extérieur</td></tr>
+            <tr><td class="time">14h00–16h30</td><td>Deuxième vague</td><td>Écoles partenaires, prépas, presse locale ; ateliers dans L'Horizon</td></tr>
+            <tr><td class="time">16h30–17h30</td><td>La Trace — moment collectif</td><td>Chaque visiteur dépose sa contribution au mur / à la capsule</td></tr>
+            <tr><td class="time">17h30</td><td>Fermeture au public</td><td>Bascule technique invisible vers le dispositif soirée</td></tr>
+          </table>
+        </div>
+        <h3 class="group-label">Cahier des charges — Journée</h3>
+        <div class="cdc-grid">
+          <div class="cdc-card"><h4>Accueil & visites</h4><ul><li>Recruter et briefer les guides par créneau</li><li>Dimensionner les groupes et le rythme des rotations</li><li>Préparer le plan-parcours remis à l'accueil</li></ul></div>
+          <div class="cdc-card"><h4>Contenu du parcours</h4><ul><li>Bornes interactives et projections d'archives</li><li>Ateliers de démonstration dans L'Horizon (labs, learning centers)</li><li>Mur de contribution pour La Trace</li></ul></div>
+          <div class="cdc-card"><h4>Restauration jour</h4><ul><li>Corner traiteur convivial en extérieur</li><li>Recensement allergies/régimes à l'inscription</li></ul></div>
+          <div class="cdc-card"><h4>Sécurité & flux</h4><ul><li>Plan ERP pour le flux grand public</li><li>Stewards par créneau, accès PMR</li><li>Plan B intempéries pour l'extérieur</li></ul></div>
+        </div>
+      </div>
+
+      <div class="subpanel" id="soiree">
+        <h3 class="group-label">Déroulé horaire</h3>
+        <div class="wrap-scroll">
+          <table class="sched">
+            <tr><th>Horaire</th><th>Séquence</th><th>Ce qui se joue</th></tr>
+            <tr><td class="time">18h30</td><td>Arrivée des invités</td><td>Vestiaire, remise d'un fragment-objet gravé, guide personnel</td></tr>
+            <tr><td class="time">19h00</td><td>Le Chemin — nocturne</td><td>Parcours en lumière et son, cocktail itinérant registre patrimonial</td></tr>
+            <tr><td class="time">19h45</td><td>Le Seuil — bascule en direct</td><td>Rupture sensorielle synchronisée, moment filmé, tous réunis</td></tr>
+            <tr><td class="time">20h00</td><td>Discours officiels</td><td>Direction, personnalité politique, alumni — 15 à 20 min max</td></tr>
+            <tr><td class="time">20h30</td><td>Dévoilement officiel</td><td>Activation lumineuse du bâtiment — moment presse et réseaux</td></tr>
+            <tr><td class="time">20h45–23h00</td><td>Dîner dans L'Horizon</td><td>Walking dinner contemporain, animation musicale live</td></tr>
+            <tr><td class="time">23h00</td><td>La Trace — clôture</td><td>Scellement de la capsule temporelle, discours court</td></tr>
+            <tr><td class="time">23h15–00h30</td><td>Networking libre</td><td>DJ set ou live, bar</td></tr>
+          </table>
+        </div>
+        <h3 class="group-label">Cahier des charges — Soirée</h3>
+        <div class="cdc-grid">
+          <div class="cdc-card"><h4>Scénographie nocturne</h4><ul><li>Mise en lumière du Chemin, bascule du Seuil</li><li>Mapping ou activation lumineuse pour le dévoilement</li><li>Répétition générale grandeur nature</li></ul></div>
+          <div class="cdc-card"><h4>Traiteur soirée</h4><ul><li>Registre patrimonial (cocktail) puis contemporain (dîner)</li><li>Dégustation test avec le comité de pilotage</li></ul></div>
+          <div class="cdc-card"><h4>Protocole VIP</h4><ul><li>Liste par cible : administration, alumni, presse, politiques, partenaires</li><li>Invitation conçue comme premier indice du récit</li><li>Accueil dédié, placement aux discours</li></ul></div>
+          <div class="cdc-card"><h4>Presse & communication</h4><ul><li>Dossier de presse et kit médias</li><li>Photographe et vidéaste dédiés</li><li>Retransmission live internationale</li></ul></div>
+        </div>
+      </div>
+
+      <div class="subpanel" id="retro">
+        <h3 class="group-label">Rétroplanning synthétique</h3>
+        <div class="wrap-scroll">
+          <table class="retro">
+            <tr><th>Jalon</th><th>Journée</th><th>Soirée</th></tr>
+            <tr><td class="jalon">J-12 mois</td><td><span class="tag-j">J</span><ul><li>Concept validé en comité de pilotage</li></ul></td><td><span class="tag-s">S</span><ul><li>Comité transverse constitué, budget cadre arbitré</li></ul></td></tr>
+            <tr><td class="jalon">J-6 mois</td><td><ul><li>Script du parcours et contenus finalisés</li></ul></td><td><ul><li>Prestataires clés sélectionnés (technique, traiteur, sécurité)</li></ul></td></tr>
+            <tr><td class="jalon">J-3 mois</td><td><ul><li>Partenariat écoles/prépas confirmé</li></ul></td><td><ul><li>Liste VIP validée, invitations envoyées, dossier de presse prêt</li></ul></td></tr>
+            <tr><td class="jalon">J-1 mois</td><td><ul><li>Bornes et mur de contribution fabriqués</li></ul></td><td><ul><li>Capsule temporelle prête, répétition générale</li></ul></td></tr>
+            <tr><td class="jalon">J-1 semaine</td><td><ul><li>Briefing des guides</li></ul></td><td><ul><li>Test technique complet, briefing des équipes soirée</li></ul></td></tr>
+            <tr><td class="jalon">Jour J</td><td><ul><li>Ouverture publique 9h–17h30</li></ul></td><td><ul><li>Soirée VIP 18h30–00h30</li></ul></td></tr>
+            <tr><td class="jalon">J+1 mois</td><td colspan="2"><ul><li>Bilan chiffré (fréquentation, satisfaction, retombées presse), remerciements aux invités</li></ul></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFORMATIONS -->
+  <section class="panel" id="informations">
+    <h2 class="section-title">Informations</h2>
+    <p class="section-sub">Coordonnées et rappel de l'offre.</p>
+
+    <div class="subnav-group">
+      <div class="subnav" role="tablist">
+        <button role="tab" aria-selected="true" data-sub="info-coord">Coordonnées</button>
+        <button role="tab" aria-selected="false" data-sub="info-offre">L'offre</button>
+      </div>
+
+      <div class="subpanel active" id="info-coord">
+        <form class="contact" onsubmit="return false;">
+          <div class="field"><label>Nom complet</label><div class="value">Lise Hanin</div></div>
+          <div class="field"><label>Email</label><div class="value">haninlise@gmail.com</div></div>
+          <div class="field"><label>Téléphone</label><div class="value">06 84 76 90 65</div></div>
+          <div class="field"><label>Localisation</label><div class="value">Bois-Guillaume · Permis B</div></div>
+          <div class="field"><label>LinkedIn</label><div class="value"><a href="https://www.linkedin.com/in/lise-hanin-b36040178/" target="_blank" rel="noopener">linkedin.com/in/lise-hanin-b36040178</a></div></div>
+        </form>
+      </div>
+
+      <div class="subpanel" id="info-offre">
+        <div class="card">
+          <h3>Lien de l'offre</h3>
+          <p><a href="https://fr.indeed.com/viewjob?jk=089529410b083367" target="_blank" rel="noopener">fr.indeed.com — Directeur(trice) Événementiel F/H, NEOMA Business School, Rouen</a></p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0;">Note sur cette reprise</h3>
+          <p style="font-size:13.5px; color:var(--ink-soft);">Le texte ci-dessous reprend fidèlement le contenu et la structure de l'annonce, reformulé dans mes propres mots plutôt que recopié mot pour mot (droits d'auteur de NEOMA / Indeed obligent). Pour la formulation exacte, le lien ci-dessus fait foi.</p>
+        </div>
+
+        <h3 class="group-label">À propos</h3>
+        <div class="card">
+          <p>NEOMA Business School se présente comme une école de premier rang international, dynamique, engagée à repousser les frontières de la connaissance et de l'innovation, avec pour mission la formation des managers et entrepreneurs de demain. L'école met en avant la diversité de ses équipes : plus de 170 métiers différents et 30 nationalités parmi ses 720 collaborateurs, répartis sur trois campus. Elle affiche également un engagement fort pour l'emploi des personnes en situation de handicap et l'égalité de traitement des candidatures.</p>
+        </div>
+
+        <h3 class="group-label">Mission du poste</h3>
+        <div class="card">
+          <p>Sous la responsabilité directe du Directeur Marketing, Communication & Développement International, le ou la titulaire du poste conçoit et déploie la stratégie événementielle globale de l'école, avec pour objectif de faire de chaque événement un vecteur du positionnement et des valeurs de NEOMA. À la tête d'une équipe de 3 personnes, en coordination transversale permanente, la personne orchestre des événements à fort impact pour trois publics clés : étudiants/prospects, partenaires académiques et économiques, collaborateurs. L'année 2027 est identifiée comme un jalon majeur, avec l'inauguration du nouveau campus de Reims.</p>
+        </div>
+
+        <h3 class="group-label">Les 5 volets de la mission</h3>
+        <div class="cdc-grid">
+          <div class="cdc-card">
+            <h4>1. Événements étudiants & conquête</h4>
+            <ul>
+              <li>Concevoir des cérémonies de remises de diplômes, vitrines de la réussite de NEOMA en France et à l'international</li>
+              <li>Piloter les dispositifs d'accueil des candidats préparationnaires (NEOMA Week, Néodébat)</li>
+              <li>Piloter les Journées et Soirées Portes Ouvertes pour soutenir le recrutement</li>
+            </ul>
+          </div>
+          <div class="cdc-card">
+            <h4>2. Événements partenaires & influence</h4>
+            <ul>
+              <li>Orchestrer, avec les DGA de l'école, des événements de réflexion sur les enjeux de demain (IA, transformations managériales)</li>
+              <li>Faire vivre les partenariats stratégiques (IRIS, professeurs de prépa)</li>
+              <li>Valoriser l'expertise académique auprès des cercles d'influence, entreprises, alumnis, partenaires institutionnels</li>
+            </ul>
+          </div>
+          <div class="cdc-card">
+            <h4>3. Événements internes</h4>
+            <ul>
+              <li>Fédérer professeurs et salariés autour de temps forts communautaires</li>
+              <li>Piloter la journée Back to School, les Amphis internes</li>
+              <li>Organiser les moments de convivialité (Noël, BBQ d'été...)</li>
+            </ul>
+          </div>
+          <div class="cdc-card">
+            <h4>4. Projet majeur 2027 — Reims</h4>
+            <ul>
+              <li>Concevoir et orchestrer l'inauguration du nouveau campus de Reims, pensée comme un outil de rayonnement national et international</li>
+              <li>Piloter le projet de A à Z : concept créatif, programmation, logistique, budget</li>
+            </ul>
+          </div>
+          <div class="cdc-card">
+            <h4>5. Management & coordination</h4>
+            <ul>
+              <li>Manager et faire grandir une équipe de 3 experts événementiel — une expérience en management est un prérequis</li>
+              <li>Coordonner avec les services internes (Services généraux, DSI, Faculté, Équipes pédagogiques) et le réseau de prestataires</li>
+              <li>Garantir budgets, plannings et normes de sécurité</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="group-label">Livrables clés</h3>
+        <div class="card">
+          <p>Calendrier événementiel annuel et budgets associés ; master plan et rétroplanning pour l'inauguration du campus de Reims 2027 ; cahiers des charges et livrables de production pour chaque grand format (remises de diplômes, NEOMA Week) ; indicateurs de performance (taux de participation, scores de satisfaction, impact ROI).</p>
+        </div>
+
+        <h3 class="group-label">Profil recherché</h3>
+        <div class="two-col">
+          <div class="card">
+            <h3>Compétences techniques</h3>
+            <ul class="clean">
+              <li>Maîtrise complète de la chaîne de production événementielle (technique, logistique, scénographie, traiteur, flux de personnes)</li>
+              <li>Solide compétence en gestion de projets d'envergure et pilotage budgétaire</li>
+              <li>Capacité à travailler en environnement matriciel, à coordonner des comités de pilotage de haut niveau (DGA, VIP)</li>
+              <li>Bon niveau d'anglais pour l'animation d'événements et l'accueil de publics internationaux</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Soft skills</h3>
+            <ul class="clean">
+              <li>Leadership affirmé, sens politique et diplomatie</li>
+              <li>Résistance au stress, gestion calme de l'imprévu</li>
+              <li>Créativité, sens du détail, exigence d'exécution</li>
+              <li>Sens du service et de l'hospitalité</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="group-label">Conditions du poste</h3>
+        <div class="card">
+          <p>Localisation à Rouen ou Reims, avec des déplacements fréquents entre les campus et Paris. Rattachement au Directeur Marketing, Communication & Développement International. Management d'une équipe de 3 personnes. Contrat : CDI.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>Document de travail — support de candidature pour le poste de Directeur(trice) Événementiel, NEOMA Business School.</footer>
+
+<script>
+  const tabs = document.querySelectorAll('nav.tabs button');
+  const panels = document.querySelectorAll('section.panel');
+  document.body.dataset.activeTab = 'profil';
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.setAttribute('aria-selected', 'true');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+      document.body.dataset.activeTab = tab.dataset.tab;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+  document.querySelectorAll('.subnav-group').forEach(group => {
+    const subtabs = group.querySelectorAll('.subnav button');
+    const subpanels = group.querySelectorAll('.subpanel');
+    subtabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => {
+        subtabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+        subpanels.forEach(p => p.classList.remove('active'));
+        tab.setAttribute('aria-selected', 'true');
+        subpanels[i].classList.add('active');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
