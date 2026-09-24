@@ -69,7 +69,16 @@
   .wrap { max-width: 940px; margin: 0 auto; padding: 8px 24px 100px; }
   .icon { width: 20px; height: 20px; flex-shrink: 0; stroke: currentColor; fill: none; stroke-width: 1.6; }
 
-  header.hero { padding: 52px 24px 0; max-width: 780px; margin: 0 auto; }
+  header.hero {
+    padding: 64px 24px 40px; max-width: 780px; margin: 0 auto; position: relative;
+  }
+  header.hero::before {
+    content: ""; position: absolute; inset: -20px -40px auto -40px; height: 340px; z-index: -1; border-radius: 0 0 40px 40px;
+    background:
+      radial-gradient(ellipse 420px 260px at 12% 10%, rgba(91,63,122,.16), transparent 65%),
+      radial-gradient(ellipse 380px 300px at 92% 0%, rgba(168,92,140,.14), transparent 60%),
+      radial-gradient(ellipse 600px 340px at 50% 100%, rgba(91,63,122,.08), transparent 70%);
+  }
   .kicker { display: flex; align-items: center; gap: 14px; font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 20px; font-weight: 600; font-family: "Work Sans", sans-serif; }
   .kicker .line { flex: 1; height: 1px; background: var(--line); }
   .kicker .num { color: var(--accent); font-weight: 700; }
@@ -84,11 +93,17 @@
   .stat-chip { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--ink); background: var(--panel); border: 1px solid var(--line); padding: 7px 13px; border-radius: 20px; }
   .stat-chip .icon { width: 15px; height: 15px; color: var(--accent); }
 
-  nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 10; display: flex; gap: 2px; overflow-x: auto; border-bottom: 1px solid var(--line); padding: 4px 24px 0; max-width: 940px; margin: 28px auto 0; scrollbar-width: none; font-family: "Work Sans", sans-serif; }
+  .masthead {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; width: 100%;
+    background: linear-gradient(120deg, #241539, #2f1c4a);
+  }
+  .masthead-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; gap: 20px; }
+  .masthead .logo { font-family: "Playfair Display", Georgia, serif; font-weight: 800; font-size: 17px; color: #fff; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; padding: 16px 0; }
+  nav.tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; font-family: "Work Sans", sans-serif; }
   nav.tabs::-webkit-scrollbar { display: none; }
-  nav.tabs button { font-family: "Work Sans", sans-serif; font-size: 13.5px; font-weight: 600; color: var(--ink-soft); background: none; border: none; padding: 16px 16px; cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; text-transform: uppercase; letter-spacing: .04em; transition: color .2s, border-color .2s; }
-  nav.tabs button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
-  nav.tabs button:hover { color: var(--ink); }
+  nav.tabs button { font-family: "Work Sans", sans-serif; font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,.68); background: none; border: none; padding: 16px 14px; cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; text-transform: uppercase; letter-spacing: .05em; transition: color .2s, border-color .2s; }
+  nav.tabs button[aria-selected="true"] { color: #fff; border-bottom-color: var(--gold); }
+  nav.tabs button:hover { color: #fff; }
 
   section.panel { display: none; }
   section.panel.active { display: block; animation: reveal .35s cubic-bezier(.2,.7,.3,1); }
@@ -191,6 +206,19 @@
 </head>
 <body>
 
+<div class="masthead">
+  <div class="masthead-inner">
+    <span class="logo">Lise Hanin</span>
+    <nav class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="profil">Qui je suis</button>
+      <button role="tab" aria-selected="false" data-tab="competences">Compétences</button>
+      <button role="tab" aria-selected="false" data-tab="pourquoi">Pourquoi NEOMA</button>
+      <button role="tab" aria-selected="false" data-tab="reims">Vision Reims</button>
+      <button role="tab" aria-selected="false" data-tab="informations">Informations</button>
+    </nav>
+  </div>
+</div>
+
 <header class="hero">
   <span class="placeholder-tag">Brouillon — prêt à affiner ensemble</span>
   <div class="kicker"><span class="line"></span><span class="num">Nº 01</span><span>Candidature — Directeur·trice Événementiel, NEOMA</span><span class="line"></span></div>
@@ -204,14 +232,6 @@
   </div>
 </header>
 
-<nav class="tabs" role="tablist">
-  <button role="tab" aria-selected="true" data-tab="profil">Qui je suis</button>
-  <button role="tab" aria-selected="false" data-tab="competences">Compétences</button>
-  <button role="tab" aria-selected="false" data-tab="pourquoi">Pourquoi NEOMA</button>
-  <button role="tab" aria-selected="false" data-tab="reims">Vision Reims</button>
-  <button role="tab" aria-selected="false" data-tab="informations">Informations</button>
-</nav>
-
 <div class="wrap">
 
   <!-- PROFIL -->
@@ -221,47 +241,11 @@
 
     <div class="subnav-group">
       <div class="subnav" role="tablist">
-        <button role="tab" aria-selected="true" data-sub="profil-parcours">Mon parcours</button>
+        <button role="tab" aria-selected="true" data-sub="profil-parcours">Parcours</button>
         <button role="tab" aria-selected="false" data-sub="profil-pourquoi">Pourquoi maintenant</button>
-        <button role="tab" aria-selected="false" data-sub="profil-historique">Historique</button>
       </div>
 
       <div class="subpanel active" id="profil-parcours">
-        <div class="two-col">
-          <div class="card">
-            <h3>Depuis oct. 2023 — Chef de projets, Cerfrance</h3>
-            <p>Pilotage de projets transversaux (stratégie immobilière, évolution des compétences, changement de logiciel interne). Animation régulière du CODIR, Comité de pilotage, CA et CSE.</p>
-          </div>
-          <div class="card">
-            <h3>2026 — Madeleine <span style="color:var(--ink-soft); font-weight:400; font-size:12.5px; font-family:'Work Sans',sans-serif;">ma marque</span></h3>
-            <p>Organisation d'événements et de voyages sur mesure pour des particuliers, budget maîtrisé, carnet de route pensé pour que le client soit autonome le jour J. Déjà lancée — l'ambition est de la faire grandir.</p>
-          </div>
-          <div class="card">
-            <h3>Bonnaire Traiteur <span style="color:var(--ink-soft); font-weight:400; font-size:12.5px; font-family:'Work Sans',sans-serif;">fév.–oct. 2023</span></h3>
-            <p>Devis, négociation client/prestataires, coordination cuisine/matériel/personnel. Mission Armada de Rouen 2023.</p>
-          </div>
-          <div class="card">
-            <h3>Urban Connect <span style="color:var(--ink-soft); font-weight:400; font-size:12.5px; font-family:'Work Sans',sans-serif;">2022</span></h3>
-            <p>Cahier des charges et direction artistique d'un tiers-lieu culturel, co-rédigés avec la Mairie de Louviers.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="subpanel" id="profil-pourquoi">
-        <div class="card highlight">
-          <h3>Chef de projet depuis 5 ans</h3>
-          <p>Agile, fonceuse, créative.</p>
-          <p>Une ambition de responsabilité, l'expression de ma créativité, une projection évidente dans l'événementiel : à titre personnel avec Madeleine (organisation de 10 événements de 6 à 20 personnes sur 2026) ; à titre associatif, mes débuts à l'EM Normandie (responsabilités d'organisation d'événements en tant que BDE jusqu'à 200 personnes, co-management avec la Présidence d'une équipe de 15 personnes constituée de 3 pôles + support) ; à titre professionnel, lors de mon expérience chez Bonnaire Traiteur (marquée par l'organisation de plusieurs événements professionnels sur les bateaux de l'Armada 2023, coordination de 3 pôles de services).</p>
-          <p>Ce poste est une évidence pour la suite de mon parcours professionnel, dans la mesure où il représente exactement ce que j'aime et souhaite concrétiser pour la suite de ma carrière.</p>
-        </div>
-        <div class="card">
-          <h3>Ma vision à moyen-long terme</h3>
-          <p>J'aspire à élargir mes compétences en management grâce à l'organisation d'événements. Mon objectif est de faire rayonner en créant des événements sur mesure, adaptés aux besoins, tout en utilisant la force du réseau.</p>
-          <p>Concrètement, il s'agit de faire grandir Madeleine, ma marque : j'aide déjà des particuliers à organiser leurs événements, ce qui est très concrètement de la gestion de projet sur mesure appliquée à l'événementiel. Pour que ce soit vraiment concret d'ici une dizaine d'années, il me faut du réseau et des compétences que je n'ai pas encore — et un poste comme celui que propose NEOMA est une valeur nécessaire dans cette équation.</p>
-        </div>
-      </div>
-
-      <div class="subpanel" id="profil-historique">
         <div class="timeline">
           <div class="step">
             <div class="when">Avant 2022</div>
@@ -290,9 +274,23 @@
           </div>
           <div class="step">
             <div class="when">2026</div>
-            <h3>Madeleine</h3>
-            <p>Lancement de ma marque : j'aide des particuliers à organiser leurs événements et leurs voyages sur mesure. 10 événements de 6 à 20 personnes déjà organisés sur l'année.</p>
+            <h3>Madeleine <span style="color:var(--ink-soft); font-weight:400; font-size:12.5px; font-family:'Work Sans',sans-serif;">ma marque</span></h3>
+            <p>Lancement de ma marque : j'aide des particuliers à organiser leurs événements et leurs voyages sur mesure, avec un carnet de route pensé pour que le client soit autonome le jour J. 10 événements de 6 à 20 personnes déjà organisés sur l'année. Déjà lancée — l'ambition est de la faire grandir.</p>
           </div>
+        </div>
+      </div>
+
+      <div class="subpanel" id="profil-pourquoi">
+        <div class="card highlight">
+          <h3>Chef de projet depuis 5 ans</h3>
+          <p>Agile, fonceuse, créative.</p>
+          <p>Une ambition de responsabilité, l'expression de ma créativité, une projection évidente dans l'événementiel : à titre personnel avec Madeleine (organisation de 10 événements de 6 à 20 personnes sur 2026) ; à titre associatif, mes débuts à l'EM Normandie (responsabilités d'organisation d'événements en tant que BDE jusqu'à 200 personnes, co-management avec la Présidence d'une équipe de 15 personnes constituée de 3 pôles + support) ; à titre professionnel, lors de mon expérience chez Bonnaire Traiteur (marquée par l'organisation de plusieurs événements professionnels sur les bateaux de l'Armada 2023, coordination de 3 pôles de services).</p>
+          <p>Ce poste est une évidence pour la suite de mon parcours professionnel, dans la mesure où il représente exactement ce que j'aime et souhaite concrétiser pour la suite de ma carrière.</p>
+        </div>
+        <div class="card">
+          <h3>Ma vision à moyen-long terme</h3>
+          <p>J'aspire à élargir mes compétences en management grâce à l'organisation d'événements. Mon objectif est de faire rayonner en créant des événements sur mesure, adaptés aux besoins, tout en utilisant la force du réseau.</p>
+          <p>Concrètement, il s'agit de faire grandir Madeleine, ma marque : j'aide déjà des particuliers à organiser leurs événements, ce qui est très concrètement de la gestion de projet sur mesure appliquée à l'événementiel. Pour que ce soit vraiment concret d'ici une dizaine d'années, il me faut du réseau et des compétences que je n'ai pas encore — et un poste comme celui que propose NEOMA est une valeur nécessaire dans cette équation.</p>
         </div>
       </div>
     </div>
