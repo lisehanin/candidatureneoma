@@ -66,12 +66,28 @@
   @keyframes sweep { from { background-position: 0% 0; } to { background-position: 220% 0; } }
   h1, h2, h3 { font-family: Georgia, "Times New Roman", Times, serif; }
   h1.display, .concept-hero h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 800; letter-spacing: -.01em; }
-  .wrap { max-width: 940px; margin: 0 auto; padding: 8px 24px 100px; }
+  :root { --content-max: 1160px; }
+  .wrap, header.hero {
+    max-width: var(--content-max);
+    margin-left: max(24px, calc((100vw - var(--content-max)) * 0.26));
+    margin-right: max(24px, calc((100vw - var(--content-max)) * 0.74));
+  }
+  .side-rail {
+    position: fixed; top: 0; right: 0; width: 64px; height: 100vh; z-index: 5;
+    display: none; flex-direction: column; align-items: center; justify-content: space-between;
+    padding: 100px 0 40px; border-left: 1px solid var(--line);
+  }
+  @media (min-width: 1500px) { .side-rail { display: flex; } }
+  .side-rail .tick { width: 18px; height: 1px; background: var(--line); }
+  .side-rail .rail-text {
+    writing-mode: vertical-rl; transform: rotate(180deg); font-family: "Work Sans", sans-serif;
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+  }
+  .side-rail .rail-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  .wrap { padding: 8px 0 100px; }
   .icon { width: 20px; height: 20px; flex-shrink: 0; stroke: currentColor; fill: none; stroke-width: 1.6; }
 
-  header.hero {
-    padding: 64px 24px 40px; max-width: 780px; margin: 0 auto; position: relative;
-  }
+  header.hero { padding: 64px 24px 40px; position: relative; }
   header.hero::before {
     content: ""; position: absolute; inset: -20px -40px auto -40px; height: 340px; z-index: -1; border-radius: 0 0 40px 40px;
     background:
@@ -95,13 +111,13 @@
 
   .masthead {
     position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; width: 100%;
-    background: linear-gradient(120deg, #241539, #2f1c4a);
+    background: linear-gradient(120deg, #3a2166, #4b2e83);
   }
-  .masthead-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; gap: 20px; }
-  .masthead .logo { font-family: "Playfair Display", Georgia, serif; font-weight: 800; font-size: 17px; color: #fff; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; padding: 16px 0; }
+  .masthead-inner { max-width: calc(var(--content-max) + 90px); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .masthead .logo { font-family: "Playfair Display", Georgia, serif; font-weight: 800; font-size: 15px; color: #fff; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; padding: 10px 0; }
   nav.tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; font-family: "Work Sans", sans-serif; }
   nav.tabs::-webkit-scrollbar { display: none; }
-  nav.tabs button { font-family: "Work Sans", sans-serif; font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,.68); background: none; border: none; padding: 16px 14px; cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; text-transform: uppercase; letter-spacing: .05em; transition: color .2s, border-color .2s; }
+  nav.tabs button { font-family: "Work Sans", sans-serif; font-size: 12px; font-weight: 600; color: rgba(255,255,255,.68); background: none; border: none; padding: 10px 12px; cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; text-transform: uppercase; letter-spacing: .05em; transition: color .2s, border-color .2s; }
   nav.tabs button[aria-selected="true"] { color: #fff; border-bottom-color: var(--gold); }
   nav.tabs button:hover { color: #fff; }
 
@@ -133,8 +149,20 @@
   .featured-card h4:first-of-type { margin-top: 4px; }
   .featured-card p { font-size: 16px; color: var(--ink); margin: 0 0 8px; }
 
+  .company-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 760px) { .company-grid { grid-template-columns: 1fr; } }
+  .company-card { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--co-color, var(--accent)); border-radius: 4px; padding: 24px 26px; }
+  .company-card .co-name { font-family: "Work Sans", sans-serif; font-size: 11.5px; text-transform: uppercase; letter-spacing: .07em; font-weight: 700; color: var(--co-color, var(--accent)); margin-bottom: 10px; }
+  .company-card p { font-size: 15.5px; margin: 0; }
+  .co-cerfrance { --co-color: #5b3f7a; }
+  .co-bonnaire { --co-color: #a85c8c; }
+  .co-urban { --co-color: #4a7a8c; }
+  .co-madeleine { --co-color: #c07a4a; }
+  .co-bde { --co-color: #7a8a5c; }
+
   .chip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   @media (max-width: 620px) { .chip-grid { grid-template-columns: 1fr; } }
+  @media (min-width: 1300px) { .chip-grid { grid-template-columns: 1fr 1fr 1fr; } }
   .chip-card { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 24px; }
   .chip-card h4 { margin: 0 0 10px; font-size: 17px; font-weight: 700; color: var(--accent); }
   .chip-card p { margin: 0 0 8px; font-size: 15px; color: var(--ink); }
@@ -181,6 +209,7 @@
 
   .cdc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 10px; }
   @media (max-width: 620px) { .cdc-grid { grid-template-columns: 1fr; } }
+  @media (min-width: 1300px) { .cdc-grid { grid-template-columns: repeat(4, 1fr); } }
   .cdc-card { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 18px 20px; }
   .cdc-card h4 { margin: 0 0 8px; font-size: 14px; font-weight: 700; color: var(--accent); font-family: "Work Sans", sans-serif; }
   .cdc-card ul { margin: 0; padding-left: 16px; }
@@ -194,6 +223,13 @@
   table.retro td li { margin-bottom: 3px; }
   .tag-j { font-family: "Work Sans", sans-serif; color: var(--accent); font-weight: 700; font-size: 11px; }
   .tag-s { font-family: "Work Sans", sans-serif; color: var(--gold); font-weight: 700; font-size: 11px; }
+
+  .offer-tag {
+    display: inline-flex; align-items: center; gap: 8px; font-family: "Work Sans", sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: .02em; color: #fff; background: var(--accent);
+    padding: 10px 18px; border-radius: 30px; text-decoration: none; margin-bottom: 24px; transition: opacity .2s;
+  }
+  .offer-tag:hover { opacity: .85; }
 
   form.contact { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 28px; }
   .field { margin-bottom: 15px; }
@@ -219,17 +255,18 @@
   </div>
 </div>
 
+<div class="side-rail">
+  <span class="rail-dot"></span>
+  <span class="rail-text">Candidature — NEOMA Business School — Nº 01</span>
+  <span class="tick"></span>
+</div>
+
 <header class="hero">
   <span class="placeholder-tag">Brouillon — prêt à affiner ensemble</span>
   <div class="kicker"><span class="line"></span><span class="num">Nº 01</span><span>Candidature — Directeur·trice Événementiel, NEOMA</span><span class="line"></span></div>
   <h1 class="display">Lise Hanin</h1>
   <p class="pitch">Chef de projet depuis 5 ans. <strong>Agile, fonceuse, créative</strong> — et surtout, une envie d'événementiel qui traverse absolument tout ce que je fais, du pro au perso.</p>
   <div class="hero-rule"></div>
-  <div class="stat-row">
-    <span class="stat-chip"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg>Co-management d'une équipe de 15 pers.</span>
-    <span class="stat-chip"><svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>4 instances pilotées</span>
-    <span class="stat-chip"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9z"/></svg>3 langues</span>
-  </div>
 </header>
 
 <div class="wrap">
@@ -241,11 +278,25 @@
 
     <div class="subnav-group">
       <div class="subnav" role="tablist">
-        <button role="tab" aria-selected="true" data-sub="profil-parcours">Parcours</button>
-        <button role="tab" aria-selected="false" data-sub="profil-pourquoi">Pourquoi maintenant</button>
+        <button role="tab" aria-selected="true" data-sub="profil-pourquoi">Pourquoi maintenant</button>
+        <button role="tab" aria-selected="false" data-sub="profil-parcours">Parcours</button>
       </div>
 
-      <div class="subpanel active" id="profil-parcours">
+      <div class="subpanel active" id="profil-pourquoi">
+        <div class="card">
+          <h3>Ma vision à moyen-long terme</h3>
+          <p>J'aspire à élargir mes compétences en management grâce à l'organisation d'événements. Mon objectif est de faire rayonner en créant des événements sur mesure, adaptés aux besoins, tout en utilisant la force du réseau.</p>
+          <p>Concrètement, il s'agit de faire grandir Madeleine, ma marque : j'aide déjà des particuliers à organiser leurs événements, ce qui est très concrètement de la gestion de projet sur mesure appliquée à l'événementiel. Pour que ce soit vraiment concret d'ici une dizaine d'années, il me faut du réseau et des compétences que je n'ai pas encore — et un poste comme celui que propose NEOMA est une valeur nécessaire dans cette équation.</p>
+        </div>
+      </div>
+
+      <div class="subpanel" id="profil-parcours">
+        <div class="card highlight">
+          <h3>Chef de projet depuis 5 ans</h3>
+          <p>Agile, fonceuse, créative.</p>
+          <p>Une ambition de responsabilité, l'expression de ma créativité, une projection évidente dans l'événementiel : à titre personnel avec Madeleine (organisation de 10 événements de 6 à 20 personnes sur 2026) ; à titre associatif, mes débuts à l'EM Normandie (responsabilités d'organisation d'événements en tant que BDE jusqu'à 200 personnes, co-management avec la Présidence d'une équipe de 15 personnes constituée de 3 pôles + support) ; à titre professionnel, lors de mon expérience chez Bonnaire Traiteur (marquée par l'organisation de plusieurs événements professionnels sur les bateaux de l'Armada 2023, coordination de 3 pôles de services).</p>
+          <p>Ce poste est une évidence pour la suite de mon parcours professionnel, dans la mesure où il représente exactement ce que j'aime et souhaite concrétiser pour la suite de ma carrière.</p>
+        </div>
         <div class="timeline">
           <div class="step">
             <div class="when">Avant 2022</div>
@@ -279,20 +330,6 @@
           </div>
         </div>
       </div>
-
-      <div class="subpanel" id="profil-pourquoi">
-        <div class="card highlight">
-          <h3>Chef de projet depuis 5 ans</h3>
-          <p>Agile, fonceuse, créative.</p>
-          <p>Une ambition de responsabilité, l'expression de ma créativité, une projection évidente dans l'événementiel : à titre personnel avec Madeleine (organisation de 10 événements de 6 à 20 personnes sur 2026) ; à titre associatif, mes débuts à l'EM Normandie (responsabilités d'organisation d'événements en tant que BDE jusqu'à 200 personnes, co-management avec la Présidence d'une équipe de 15 personnes constituée de 3 pôles + support) ; à titre professionnel, lors de mon expérience chez Bonnaire Traiteur (marquée par l'organisation de plusieurs événements professionnels sur les bateaux de l'Armada 2023, coordination de 3 pôles de services).</p>
-          <p>Ce poste est une évidence pour la suite de mon parcours professionnel, dans la mesure où il représente exactement ce que j'aime et souhaite concrétiser pour la suite de ma carrière.</p>
-        </div>
-        <div class="card">
-          <h3>Ma vision à moyen-long terme</h3>
-          <p>J'aspire à élargir mes compétences en management grâce à l'organisation d'événements. Mon objectif est de faire rayonner en créant des événements sur mesure, adaptés aux besoins, tout en utilisant la force du réseau.</p>
-          <p>Concrètement, il s'agit de faire grandir Madeleine, ma marque : j'aide déjà des particuliers à organiser leurs événements, ce qui est très concrètement de la gestion de projet sur mesure appliquée à l'événementiel. Pour que ce soit vraiment concret d'ici une dizaine d'années, il me faut du réseau et des compétences que je n'ai pas encore — et un poste comme celui que propose NEOMA est une valeur nécessaire dans cette équation.</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -311,64 +348,90 @@
       </div>
 
       <div class="subpanel active" id="c1">
-        <div class="featured-card">
-          <h3>Pilotage d'instances & sens politique</h3>
-          <h4>Cerfrance</h4>
-          <p>Animation d'instances de communication projet (Comité de pilotage, Comité de direction, Conseil d'Administration, CSE) et adaptation du langage et des supports dédiés.</p>
-          <p>Défense du projet auprès des instances décisionnelles, explication des raisonnements de l'écriture du projet (besoins/risques versus solutions/impacts). Management indirect dans l'instance comité de pilotage : demandes de suivi de production, gestion des émotions lors de la prise de décision, prise de hauteur et recentralisation des sujets, gestion du temps (adaptation des récurrences aux besoins du projet, agilité pour la gestion des imprévus et/ou la création de confort).</p>
-          <h4>Urban Connect</h4>
-          <p>Participation à diverses instances apolitiques, associatives, événementielles, dans l'objectif de rencontrer le tissu local de Louviers ; échanges sur le projet avec des personnalités variées dans le but de promouvoir et rassembler : défense du projet, de ses intérêts, de ses objectifs et de ses impacts.</p>
+        <h3 class="group-label">Pilotage d'instances & sens politique</h3>
+        <div class="company-grid">
+          <div class="company-card co-cerfrance">
+            <div class="co-name">Cerfrance</div>
+            <p>Animation d'instances de communication projet (Comité de pilotage, Comité de direction, Conseil d'Administration, CSE) et adaptation du langage et des supports dédiés.</p>
+            <p style="margin-top:10px;">Défense du projet auprès des instances décisionnelles, explication des raisonnements de l'écriture du projet (besoins/risques versus solutions/impacts). Management indirect dans l'instance comité de pilotage : demandes de suivi de production, gestion des émotions lors de la prise de décision, prise de hauteur et recentralisation des sujets, gestion du temps (adaptation des récurrences aux besoins du projet, agilité pour la gestion des imprévus et/ou la création de confort).</p>
+          </div>
+          <div class="company-card co-urban">
+            <div class="co-name">Urban Connect</div>
+            <p>Participation à diverses instances apolitiques, associatives, événementielles, dans l'objectif de rencontrer le tissu local de Louviers ; échanges sur le projet avec des personnalités variées dans le but de promouvoir et rassembler : défense du projet, de ses intérêts, de ses objectifs et de ses impacts.</p>
+          </div>
         </div>
       </div>
 
       <div class="subpanel" id="c2">
-        <div class="featured-card">
-          <h3>Production & coordination</h3>
-          <h4>Cerfrance</h4>
-          <p>Coordination et communication auprès des équipes métiers au service des livrables du projet : organisation et animation d'ateliers à buts divers, transmission des informations nécessaires au bon déploiement du projet (préparation puis animation en Journée managers, en réunion d'agences, auprès des équipes métiers ciblées), production de la ressource nécessaire à la prise de décision (en groupe de travail avec les ressources ciblées, en réunion interne afin de coordonner les visions stratégiques des services).</p>
-          <h4>Bonnaire Traiteur</h4>
-          <p>Coordination de la préparation de la production et des équipes en amont des événements (cuisine, service, logistique, lieux), en tenant compte des contraintes client et du lieu de réception ; coordination logistique le jour de l'événement, en tenant compte des contraintes inhérentes au contexte (météo, absence, changement d'effectif...).</p>
-          <h4>Madeleine</h4>
-          <p>Organisation d'événements à l'étranger pour des particuliers, à l'occasion d'événements ponctuels : définition du cahier des charges en lien avec le groupe, benchmark des prestataires adaptés aux diverses contraintes, proposition et choix par les clients, réservation et paiement des prestataires, gestion des imprévus (annulations, changements d'effectif, changements d'horaire de vol...), écriture d'un carnet de route de l'événement pour que le client soit autonome le jour J.</p>
+        <h3 class="group-label">Production & coordination</h3>
+        <div class="company-grid">
+          <div class="company-card co-cerfrance">
+            <div class="co-name">Cerfrance</div>
+            <p>Coordination et communication auprès des équipes métiers au service des livrables du projet : organisation et animation d'ateliers à buts divers, transmission des informations nécessaires au bon déploiement du projet (préparation puis animation en Journée managers, en réunion d'agences, auprès des équipes métiers ciblées), production de la ressource nécessaire à la prise de décision (en groupe de travail avec les ressources ciblées, en réunion interne afin de coordonner les visions stratégiques des services).</p>
+          </div>
+          <div class="company-card co-bonnaire">
+            <div class="co-name">Bonnaire Traiteur</div>
+            <p>Coordination de la préparation de la production et des équipes en amont des événements (cuisine, service, logistique, lieux), en tenant compte des contraintes client et du lieu de réception ; coordination logistique le jour de l'événement, en tenant compte des contraintes inhérentes au contexte (météo, absence, changement d'effectif...).</p>
+          </div>
+          <div class="company-card co-madeleine">
+            <div class="co-name">Madeleine</div>
+            <p>Organisation d'événements à l'étranger pour des particuliers, à l'occasion d'événements ponctuels : définition du cahier des charges en lien avec le groupe, benchmark des prestataires adaptés aux diverses contraintes, proposition et choix par les clients, réservation et paiement des prestataires, gestion des imprévus (annulations, changements d'effectif, changements d'horaire de vol...), écriture d'un carnet de route de l'événement pour que le client soit autonome le jour J.</p>
+          </div>
         </div>
       </div>
 
       <div class="subpanel" id="c3">
-        <div class="featured-card">
-          <h3>Rayonnement institutionnel & partenaires</h3>
-          <h4>Urban Connect</h4>
-          <p>Rédaction du cahier des charges et projection de la direction artistique — commande d'un projet de tiers-lieu culturel co-rédigée entre l'entreprise et la Mairie de Louviers — et rencontre de personnalités représentant des instances au profil correspondant à cette direction artistique (producteurs locaux, artistes, partenariats avec d'autres tiers-lieux, organismes de financement).</p>
-          <h4>Cerfrance</h4>
-          <p>Participation à des salons Numérique Responsable et IA, dans l'objectif de projeter une vision stratégique d'entreprise ambitieuse et ancrée dans le présent.</p>
-          <h4>Bonnaire Traiteur</h4>
-          <p>Rencontre et visite des lieux de partenariat de l'entreprise, recherche de nouveaux lieux pour contractualiser et établir une relation d'échange commercial.</p>
+        <h3 class="group-label">Rayonnement institutionnel & partenaires</h3>
+        <div class="company-grid">
+          <div class="company-card co-urban">
+            <div class="co-name">Urban Connect</div>
+            <p>Rédaction du cahier des charges et projection de la direction artistique — commande d'un projet de tiers-lieu culturel co-rédigée entre l'entreprise et la Mairie de Louviers — et rencontre de personnalités représentant des instances au profil correspondant à cette direction artistique (producteurs locaux, artistes, partenariats avec d'autres tiers-lieux, organismes de financement).</p>
+          </div>
+          <div class="company-card co-cerfrance">
+            <div class="co-name">Cerfrance</div>
+            <p>Participation à des salons Numérique Responsable et IA, dans l'objectif de projeter une vision stratégique d'entreprise ambitieuse et ancrée dans le présent.</p>
+          </div>
+          <div class="company-card co-bonnaire">
+            <div class="co-name">Bonnaire Traiteur</div>
+            <p>Rencontre et visite des lieux de partenariat de l'entreprise, recherche de nouveaux lieux pour contractualiser et établir une relation d'échange commercial.</p>
+          </div>
         </div>
       </div>
 
       <div class="subpanel" id="c4">
-        <div class="featured-card">
-          <h3>Budget & contractualisation</h3>
-          <h4>Bonnaire Traiteur</h4>
-          <p>Prise de cahier des charges des clients (B2B) pour leurs événements ponctuels, réalisation d'un devis adapté valorisant le savoir-faire de l'entreprise (proposition d'un devis répondant à la demande du client, avec des annexes optionnelles en lien avec les nouveautés de l'entreprise), enquête de satisfaction du client en aval de l'événement (prise en compte des retours et anticipation de futurs événements).</p>
-          <h4>Madeleine</h4>
-          <p>Adaptation du projet au budget du client, élaboration d'une proposition en lien avec ses besoins et ses contraintes — budget maximum 5k€.</p>
-          <h4>BDE EM Normandie</h4>
-          <p>Écriture d'un prévisionnel budgétaire annuel sur la base d'un budget donné, présentation et validation du budget prévisionnel en direction, répartition du budget par pôle, prévisionnel et suivi des dépenses pour chaque événement, mensuellement et au global sur l'année — budget maximum 20k€.</p>
+        <h3 class="group-label">Budget & contractualisation</h3>
+        <div class="company-grid">
+          <div class="company-card co-bonnaire">
+            <div class="co-name">Bonnaire Traiteur</div>
+            <p>Prise de cahier des charges des clients (B2B) pour leurs événements ponctuels, réalisation d'un devis adapté valorisant le savoir-faire de l'entreprise (proposition d'un devis répondant à la demande du client, avec des annexes optionnelles en lien avec les nouveautés de l'entreprise), enquête de satisfaction du client en aval de l'événement (prise en compte des retours et anticipation de futurs événements).</p>
+          </div>
+          <div class="company-card co-madeleine">
+            <div class="co-name">Madeleine</div>
+            <p>Adaptation du projet au budget du client, élaboration d'une proposition en lien avec ses besoins et ses contraintes — budget maximum 5k€.</p>
+          </div>
+          <div class="company-card co-bde">
+            <div class="co-name">BDE EM Normandie</div>
+            <p>Écriture d'un prévisionnel budgétaire annuel sur la base d'un budget donné, présentation et validation du budget prévisionnel en direction, répartition du budget par pôle, prévisionnel et suivi des dépenses pour chaque événement, mensuellement et au global sur l'année — budget maximum 20k€.</p>
+          </div>
         </div>
       </div>
 
       <div class="subpanel" id="c5">
-        <div class="chip-grid">
-          <div class="chip-card">
-            <h4>IA & outils de pilotage</h4>
-            <p><strong>Cerfrance</strong> — Création d'outils sur mesure au service des besoins de projets : sites internet adaptés (présentation de l'évolution RH sur les prochaines années — nouveaux profils, compétences associées, critères d'évaluation, cartographie actuelle des collaborateurs et leur projection), outil de suivi de la migration du logiciel de paie interne à 3 interfaces (remplissage par le métier, interface de gestion pour les responsables d'équipe, dashboard de suivi projet). Suivi de production mené sur Monday.</p>
-            <p><strong>Madeleine</strong> — Carnets de route présentés sous forme de site internet accessible sur mobile, avec les onglets nécessaires à l'organisation (Vol, Logement, Activités, Informations pratiques), centralisant l'ensemble des informations indispensables : cartes d'embarquement, code de réservation, liens Google Maps vers les adresses de rendez-vous, numéros de téléphone...</p>
+        <h3 class="group-label">IA & outils de pilotage</h3>
+        <div class="company-grid">
+          <div class="company-card co-cerfrance">
+            <div class="co-name">Cerfrance</div>
+            <p>Création d'outils sur mesure au service des besoins de projets : sites internet adaptés (présentation de l'évolution RH sur les prochaines années — nouveaux profils, compétences associées, critères d'évaluation, cartographie actuelle des collaborateurs et leur projection), outil de suivi de la migration du logiciel de paie interne à 3 interfaces (remplissage par le métier, interface de gestion pour les responsables d'équipe, dashboard de suivi projet). Suivi de production mené sur Monday.</p>
           </div>
-          <div class="chip-card">
-            <h4>Langues</h4>
-            <p>Français : natif. Anglais : courant (TOEIC 810/990). Espagnol : B2 certifié. Mandarin : bases d'introduction et notions culturelles.</p>
-            <p>Aucune appréhension à l'idée de présenter un projet dans une langue étrangère, anglais ou espagnol.</p>
+          <div class="company-card co-madeleine">
+            <div class="co-name">Madeleine</div>
+            <p>Carnets de route présentés sous forme de site internet accessible sur mobile, avec les onglets nécessaires à l'organisation (Vol, Logement, Activités, Informations pratiques), centralisant l'ensemble des informations indispensables : cartes d'embarquement, code de réservation, liens Google Maps vers les adresses de rendez-vous, numéros de téléphone...</p>
           </div>
+        </div>
+        <h3 class="group-label">Langues</h3>
+        <div class="card">
+          <p>Français : natif. Anglais : courant (TOEIC 810/990). Espagnol : B2 certifié. Mandarin : bases d'introduction et notions culturelles.</p>
+          <p>Aucune appréhension à l'idée de présenter un projet dans une langue étrangère, anglais ou espagnol.</p>
         </div>
       </div>
     </div>
@@ -504,121 +567,19 @@
   <!-- INFORMATIONS -->
   <section class="panel" id="informations">
     <h2 class="section-title">Informations</h2>
-    <p class="section-sub">Coordonnées et rappel de l'offre.</p>
+    <p class="section-sub">Coordonnées.</p>
 
-    <div class="subnav-group">
-      <div class="subnav" role="tablist">
-        <button role="tab" aria-selected="true" data-sub="info-coord">Coordonnées</button>
-        <button role="tab" aria-selected="false" data-sub="info-offre">L'offre</button>
-      </div>
+    <a href="https://fr.indeed.com/viewjob?jk=089529410b083367" target="_blank" rel="noopener" class="offer-tag">
+      Voir l'offre sur Indeed — Directeur(trice) Événementiel F/H, NEOMA
+    </a>
 
-      <div class="subpanel active" id="info-coord">
-        <form class="contact" onsubmit="return false;">
-          <div class="field"><label>Nom complet</label><div class="value">Lise Hanin</div></div>
-          <div class="field"><label>Email</label><div class="value">haninlise@gmail.com</div></div>
-          <div class="field"><label>Téléphone</label><div class="value">06 84 76 90 65</div></div>
-          <div class="field"><label>Localisation</label><div class="value">Bois-Guillaume · Permis B</div></div>
-          <div class="field"><label>LinkedIn</label><div class="value"><a href="https://www.linkedin.com/in/lise-hanin-b36040178/" target="_blank" rel="noopener">linkedin.com/in/lise-hanin-b36040178</a></div></div>
-        </form>
-      </div>
-
-      <div class="subpanel" id="info-offre">
-        <div class="card">
-          <h3>Lien de l'offre</h3>
-          <p><a href="https://fr.indeed.com/viewjob?jk=089529410b083367" target="_blank" rel="noopener">fr.indeed.com — Directeur(trice) Événementiel F/H, NEOMA Business School, Rouen</a></p>
-        </div>
-
-        <div class="card">
-          <h3 style="margin-top:0;">Note sur cette reprise</h3>
-          <p style="font-size:13.5px; color:var(--ink-soft);">Le texte ci-dessous reprend fidèlement le contenu et la structure de l'annonce, reformulé dans mes propres mots plutôt que recopié mot pour mot (droits d'auteur de NEOMA / Indeed obligent). Pour la formulation exacte, le lien ci-dessus fait foi.</p>
-        </div>
-
-        <h3 class="group-label">À propos</h3>
-        <div class="card">
-          <p>NEOMA Business School se présente comme une école de premier rang international, dynamique, engagée à repousser les frontières de la connaissance et de l'innovation, avec pour mission la formation des managers et entrepreneurs de demain. L'école met en avant la diversité de ses équipes : plus de 170 métiers différents et 30 nationalités parmi ses 720 collaborateurs, répartis sur trois campus. Elle affiche également un engagement fort pour l'emploi des personnes en situation de handicap et l'égalité de traitement des candidatures.</p>
-        </div>
-
-        <h3 class="group-label">Mission du poste</h3>
-        <div class="card">
-          <p>Sous la responsabilité directe du Directeur Marketing, Communication & Développement International, le ou la titulaire du poste conçoit et déploie la stratégie événementielle globale de l'école, avec pour objectif de faire de chaque événement un vecteur du positionnement et des valeurs de NEOMA. À la tête d'une équipe de 3 personnes, en coordination transversale permanente, la personne orchestre des événements à fort impact pour trois publics clés : étudiants/prospects, partenaires académiques et économiques, collaborateurs. L'année 2027 est identifiée comme un jalon majeur, avec l'inauguration du nouveau campus de Reims.</p>
-        </div>
-
-        <h3 class="group-label">Les 5 volets de la mission</h3>
-        <div class="cdc-grid">
-          <div class="cdc-card">
-            <h4>1. Événements étudiants & conquête</h4>
-            <ul>
-              <li>Concevoir des cérémonies de remises de diplômes, vitrines de la réussite de NEOMA en France et à l'international</li>
-              <li>Piloter les dispositifs d'accueil des candidats préparationnaires (NEOMA Week, Néodébat)</li>
-              <li>Piloter les Journées et Soirées Portes Ouvertes pour soutenir le recrutement</li>
-            </ul>
-          </div>
-          <div class="cdc-card">
-            <h4>2. Événements partenaires & influence</h4>
-            <ul>
-              <li>Orchestrer, avec les DGA de l'école, des événements de réflexion sur les enjeux de demain (IA, transformations managériales)</li>
-              <li>Faire vivre les partenariats stratégiques (IRIS, professeurs de prépa)</li>
-              <li>Valoriser l'expertise académique auprès des cercles d'influence, entreprises, alumnis, partenaires institutionnels</li>
-            </ul>
-          </div>
-          <div class="cdc-card">
-            <h4>3. Événements internes</h4>
-            <ul>
-              <li>Fédérer professeurs et salariés autour de temps forts communautaires</li>
-              <li>Piloter la journée Back to School, les Amphis internes</li>
-              <li>Organiser les moments de convivialité (Noël, BBQ d'été...)</li>
-            </ul>
-          </div>
-          <div class="cdc-card">
-            <h4>4. Projet majeur 2027 — Reims</h4>
-            <ul>
-              <li>Concevoir et orchestrer l'inauguration du nouveau campus de Reims, pensée comme un outil de rayonnement national et international</li>
-              <li>Piloter le projet de A à Z : concept créatif, programmation, logistique, budget</li>
-            </ul>
-          </div>
-          <div class="cdc-card">
-            <h4>5. Management & coordination</h4>
-            <ul>
-              <li>Manager et faire grandir une équipe de 3 experts événementiel — une expérience en management est un prérequis</li>
-              <li>Coordonner avec les services internes (Services généraux, DSI, Faculté, Équipes pédagogiques) et le réseau de prestataires</li>
-              <li>Garantir budgets, plannings et normes de sécurité</li>
-            </ul>
-          </div>
-        </div>
-
-        <h3 class="group-label">Livrables clés</h3>
-        <div class="card">
-          <p>Calendrier événementiel annuel et budgets associés ; master plan et rétroplanning pour l'inauguration du campus de Reims 2027 ; cahiers des charges et livrables de production pour chaque grand format (remises de diplômes, NEOMA Week) ; indicateurs de performance (taux de participation, scores de satisfaction, impact ROI).</p>
-        </div>
-
-        <h3 class="group-label">Profil recherché</h3>
-        <div class="two-col">
-          <div class="card">
-            <h3>Compétences techniques</h3>
-            <ul class="clean">
-              <li>Maîtrise complète de la chaîne de production événementielle (technique, logistique, scénographie, traiteur, flux de personnes)</li>
-              <li>Solide compétence en gestion de projets d'envergure et pilotage budgétaire</li>
-              <li>Capacité à travailler en environnement matriciel, à coordonner des comités de pilotage de haut niveau (DGA, VIP)</li>
-              <li>Bon niveau d'anglais pour l'animation d'événements et l'accueil de publics internationaux</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Soft skills</h3>
-            <ul class="clean">
-              <li>Leadership affirmé, sens politique et diplomatie</li>
-              <li>Résistance au stress, gestion calme de l'imprévu</li>
-              <li>Créativité, sens du détail, exigence d'exécution</li>
-              <li>Sens du service et de l'hospitalité</li>
-            </ul>
-          </div>
-        </div>
-
-        <h3 class="group-label">Conditions du poste</h3>
-        <div class="card">
-          <p>Localisation à Rouen ou Reims, avec des déplacements fréquents entre les campus et Paris. Rattachement au Directeur Marketing, Communication & Développement International. Management d'une équipe de 3 personnes. Contrat : CDI.</p>
-        </div>
-      </div>
-    </div>
+    <form class="contact" onsubmit="return false;">
+      <div class="field"><label>Nom complet</label><div class="value">Lise Hanin</div></div>
+      <div class="field"><label>Email</label><div class="value">haninlise@gmail.com</div></div>
+      <div class="field"><label>Téléphone</label><div class="value">06 84 76 90 65</div></div>
+      <div class="field"><label>Localisation</label><div class="value">Bois-Guillaume · Permis B</div></div>
+      <div class="field"><label>LinkedIn</label><div class="value"><a href="https://www.linkedin.com/in/lise-hanin-b36040178/" target="_blank" rel="noopener">linkedin.com/in/lise-hanin-b36040178</a></div></div>
+    </form>
   </section>
 
 </div>
