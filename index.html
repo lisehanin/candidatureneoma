@@ -848,6 +848,43 @@
   .lettering p + .l-label { margin-top: 32px; }
   .j-byline { border-bottom: 1px solid var(--line); padding-bottom: 0; margin-bottom: 26px; }
   .j-chapo { margin-bottom: 22px; }
+
+  /* ===== v12 : carnet ===== */
+  .c-page[data-cpage="0"] { padding-top: 4px; }
+  .offer-k { margin: 0 0 10px; }
+  .mission { margin: 0 0 22px; padding: 0; font-family: var(--hand); font-weight: 700; font-size: clamp(21px, 2.5vw, 27px); line-height: 1.5; color: var(--pen); max-width: 46ch; }
+  .mission mark { --hlc: rgba(255,214,79,.7); padding: 2px 6px; }
+  .rayon { position: absolute; top: -10px; right: 0; display: flex; align-items: center; gap: 10px; transform: rotate(-6deg); transform-origin: right center; max-width: 52%; }
+  .rayon-t { font-family: var(--hand); font-weight: 700; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.15; color: var(--k4); text-align: right;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6' preserveAspectRatio='none'%3E%3Cpath d='M1 4 C 30 1, 60 6, 99 2' fill='none' stroke='%23c08a1e' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") bottom right / 100% 6px no-repeat; padding-bottom: 8px; }
+  .rayon-smile { font-family: var(--hand); font-weight: 700; font-size: 30px; color: var(--k4); transform: rotate(90deg); display: inline-block; line-height: 1; }
+  .strat-legend { list-style: none; margin: 0 0 26px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 26px; }
+  .strat-legend li { position: relative; padding-left: 18px; font-family: var(--hand); font-size: 16px; line-height: 1.45; }
+  .strat-legend li::before { content: "●"; position: absolute; left: 0; top: 1px; color: var(--lc); font-size: 12px; }
+  .strat-legend b { font-family: var(--ui); font-weight: 700; font-size: 13.5px; letter-spacing: .1em; color: var(--lc); }
+  .strat-legend mark { padding: 0 5px; margin-right: 4px; }
+  .fed { font-family: var(--hand); font-style: italic; font-size: 16px; color: var(--pen); opacity: .55; margin: 0 0 4px; }
+  .know2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 110px; max-width: 900px; }
+  .vision-t { font-size: clamp(28px, 3.6vw, 40px); margin-bottom: 8px; }
+  @media (max-width: 860px) {
+    .rayon { position: static; max-width: none; justify-content: flex-end; margin: 4px 4px 18px; transform: rotate(-4deg); }
+    .rayon-t { font-size: 22px; }
+    .strat-legend { grid-template-columns: 1fr; gap: 8px; }
+    .know2 { grid-template-columns: 1fr; gap: 20px; }
+    .kcol li { position: relative; padding-left: 18px; }
+    .kcol li::before, .lk::before { content: "●"; position: absolute; left: 0; top: 9px; margin: 0; font-size: 11px; vertical-align: 0; }
+    .kcol li.lk::before { color: var(--lc); }
+    .kcol li:not(.lk)::before { color: var(--pen); opacity: .45; }
+  }
+
+  .offer-top { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); gap: 30px; align-items: center; margin-bottom: 22px; }
+  .offer-top .mission { margin-bottom: 0; }
+  .rayon { position: static; max-width: none; justify-content: center; transform: rotate(-7deg); transform-origin: center; }
+  .rayon-t { display: inline-block; text-align: center; }
+  @media (max-width: 860px) {
+    .offer-top { grid-template-columns: 1fr; gap: 16px; }
+    .rayon { justify-content: flex-end; transform: rotate(-4deg); margin: 0 4px; }
+  }
 </style>
 </head>
 <body data-active-tab="profil">
@@ -1211,18 +1248,28 @@
     <div class="carnet" id="carnet">
 
       <div class="c-page active" data-cpage="0">
-        <h3 class="c-title">Ce que je sais déjà</h3>
-        <p class="c-sub">Ce que l’offre m’apprend des événements de NEOMA :</p>
-        <div class="know" id="know">
+        <div class="offer-top">
+          <div class="ot-main">
+        <p class="c-sub offer-k">Ce que l’offre m’apprend :</p>
+        <blockquote class="mission"><mark class="hl hl-y">« Mission : faire de chaque événement un vecteur d’incarnation du positionnement, des valeurs et de la stratégie d’excellence de l’école »</mark></blockquote>
+          </div>
+        <div class="rayon"><span class="rayon-t">Rayonnement, national comme international</span><span class="rayon-smile" aria-hidden="true">:)</span></div>
+        </div>
+        <ul class="strat-legend">
+          <li class="lk-a"><mark><b>ATTRACTIVITÉ</b></mark> convaincre candidats et préparationnaires</li>
+          <li class="lk-b"><mark><b>COMMUNAUTÉ</b></mark> fédérer étudiants, alumni et collaborateurs</li>
+          <li class="lk-c"><mark><b>INFLUENCE</b></mark> porter les sujets de demain</li>
+        </ul>
+        <p class="fed">Alimenté par :</p>
+        <div class="know know2" id="know">
           <svg class="know-links" aria-hidden="true"></svg>
           <div class="kcol">
             <div class="kc-h">Événements</div>
             <ul>
-              <li class="lk lk-a" data-link="a"><mark>NEOMA Week</mark></li>
+              <li class="lk lk-a" data-link="a"><mark>NEOMA Week, Néodébats</mark></li>
               <li>Journées et Soirées Portes Ouvertes</li>
               <li class="lk lk-b" data-link="b"><mark>Remises de diplômes, en France et à l’international</mark></li>
-              <li>Back to School, Amphis internes, Noël, BBQ d’été</li>
-              <li>Néodébat</li>
+              <li>Back to School, Amphis internes, événements de convivialité (Noël, barbecue d’été...)</li>
               <li class="lk lk-c" data-link="c"><mark>Événements IA et transformations managériales</mark></li>
               <li class="lk lk-d" data-link="d"><mark>Inauguration du campus de Reims, 2027</mark></li>
             </ul>
@@ -1239,57 +1286,39 @@
               <li>Prestataires</li>
             </ul>
           </div>
-          <div class="kcol">
-            <div class="kc-h">Stratégie</div>
-            <ul>
-              <li><mark class="hl hl-y">Faire de chaque événement un vecteur d’incarnation du positionnement de l’école</mark></li>
-              <li class="lk lk-a" data-link="a"><mark>Attractivité : convaincre candidats et préparationnaires</mark></li>
-              <li class="lk lk-b" data-link="b"><mark>Communauté : fédérer étudiants, alumni et collaborateurs</mark></li>
-              <li class="lk lk-c" data-link="c"><mark>Influence : porter les sujets de demain</mark></li>
-              <li class="lk lk-d" data-link="d"><mark>Rayonnement, national comme international</mark></li>
-            </ul>
-          </div>
         </div>
         <p class="corner-inline know-note">les flèches relient les points qui se répondent</p>
       </div>
 
       <div class="c-page" data-cpage="1">
-        <span class="corner">à relire avant chaque nouvel événement</span>
-        <h3 class="c-title">Ma vision</h3>
-        <p class="c-sub">Donner du sens, créer du lien, mesurer l’impact.</p>
-        <p class="c-text">Si je prends la direction événementielle de NEOMA demain, ma première mission ne serait pas de produire davantage d’événements, mais de donner à l’ensemble du portefeuille <mark class="hl hl-y">une vision commune</mark> : pourquoi cet événement existe, à qui il s’adresse, ce qu’il doit produire et comment nous mesurerons sa réussite.</p>
-        <div class="schema-hand sh2">
-          <div class="sh2-grid">
-            <div class="sh-item sh-src">
-              <div class="sh-word big"><svg class="sh-circle" viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M22 50 C 10 20, 140 4, 184 26 C 206 40, 184 70, 108 74 C 44 78, 4 64, 12 42 C 18 26, 58 14, 100 12"/></svg><span>du sens</span></div>
+        <h3 class="c-title vision-t">Donner du sens, créer du lien, mesurer l’impact.</h3>
+        <div class="schema-hand">
+          <div class="sh-row">
+            <div class="sh-item">
+              <div class="sh-word"><svg class="sh-circle" viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M22 50 C 10 20, 140 4, 184 26 C 206 40, 184 70, 108 74 C 44 78, 4 64, 12 42 C 18 26, 58 14, 100 12"/></svg><span>du sens</span></div>
               <p class="sh-note">pourquoi cet événement existe</p>
             </div>
-            <div class="sh2-arrows">
-              <svg class="sh2-h" viewBox="0 0 140 220" preserveAspectRatio="none" aria-hidden="true"><path d="M6 112 C 50 110, 70 46, 128 40"/><path d="M114 30 L 129 40 L 115 51"/><path d="M6 112 C 50 114, 70 176, 128 182"/><path d="M114 171 L 129 182 L 113 191"/></svg>
-              <svg class="sh2-v" viewBox="0 0 220 80" preserveAspectRatio="none" aria-hidden="true"><path d="M110 4 C 108 34, 60 44, 50 74"/><path d="M42 62 L 50 75 L 61 64"/><path d="M110 4 C 112 34, 160 44, 170 74"/><path d="M159 64 L 170 75 L 178 62"/></svg>
-              <span class="sh2-label">alimente</span>
+            <svg class="sh-arrow" viewBox="0 0 90 50" aria-hidden="true"><path d="M4 34 C 24 8, 58 4, 82 24"/><path d="M68 15 L 83 25 L 66 32"/></svg>
+            <div class="sh-item">
+              <div class="sh-word"><svg class="sh-circle" viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M30 18 C 80 2, 196 10, 190 44 C 186 70, 60 80, 22 62 C -2 50, 8 24, 54 14 C 70 11, 86 10, 104 11"/></svg><span>du lien</span></div>
+              <p class="sh-note">à qui il s’adresse, ce qu’il rassemble</p>
             </div>
-            <div class="sh2-targets">
-              <div class="sh-item">
-                <div class="sh-word"><svg class="sh-circle" viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M30 18 C 80 2, 196 10, 190 44 C 186 70, 60 80, 22 62 C -2 50, 8 24, 54 14 C 70 11, 86 10, 104 11"/></svg><span>du lien</span></div>
-                <p class="sh-note">à qui il s’adresse, ce qu’il rassemble</p>
-              </div>
-              <div class="sh-item">
-                <div class="sh-word"><svg class="sh-circle" viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M20 40 C 14 14, 120 2, 178 20 C 206 30, 196 66, 120 74 C 56 80, 8 70, 10 46 C 12 30, 50 16, 92 14"/></svg><span>de l’impact</span></div>
-                <p class="sh-note">ce qu’il produit, et comment nous le mesurerons</p>
-              </div>
+            <svg class="sh-arrow" viewBox="0 0 90 50" aria-hidden="true"><path d="M4 30 C 30 44, 60 40, 82 20"/><path d="M66 18 L 83 19 L 77 34"/></svg>
+            <div class="sh-item">
+              <div class="sh-word"><svg class="sh-circle" viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M20 40 C 14 14, 120 2, 178 20 C 206 30, 196 66, 120 74 C 56 80, 8 70, 10 46 C 12 30, 50 16, 92 14"/></svg><span>de l’impact</span></div>
+              <p class="sh-note">ce qu’il produit, et comment nous le mesurerons</p>
             </div>
           </div>
           <div class="sh-back">
-            <svg class="sh-loop" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true"><path d="M520 6 C 500 52, 130 58, 92 12"/><path d="M84 26 L 91 10 L 108 17"/></svg>
+            <svg class="sh-loop" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true"><path d="M510 6 C 490 52, 130 58, 92 12"/><path d="M84 26 L 91 10 L 108 17"/></svg>
             <p class="sh-loop-note">et on recommence, en mieux</p>
           </div>
         </div>
       </div>
 
+
       <div class="c-page" data-cpage="2">
-        <h3 class="c-title">Mes premières actions</h3>
-        <p class="c-sub">Avant d’imaginer, comprendre.</p>
+        <h3 class="c-title">Objectif majeur : comprendre l’environnement</h3>
         <ul class="dash-list">
           <li><span class="dl-t"><mark class="hl hl-p">Rencontrer l’équipe</mark></span> : compétences, appétences, expertises et complémentarités de chacun</li>
           <li><span class="dl-t">Comprendre l’écosystème</span> : interactions services supports, clients externes, clients internes</li>
@@ -1297,7 +1326,6 @@
           <li><span class="dl-t">Cartographier le réseau</span> : partenaires, prestataires, institutions, entreprises et relais d’influence</li>
           <li><span class="dl-t">Clarifier les priorités de l’année</span> : quel message, quels publics, quelle expérience, quel impact attendu</li>
         </ul>
-        <p class="c-close">Puis seulement : imaginer.</p>
       </div>
 
       <div class="c-page" data-cpage="3">
