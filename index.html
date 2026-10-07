@@ -885,6 +885,40 @@
     .offer-top { grid-template-columns: 1fr; gap: 16px; }
     .rayon { justify-content: flex-end; transform: rotate(-4deg); margin: 0 4px; }
   }
+
+  /* ===== v13 ===== */
+  .vrac2 { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 44px; align-items: start; margin-top: 8px; }
+  .vrac2 .qa { max-width: none; }
+  .vrac2 .qa li { grid-template-columns: minmax(0, 1.1fr) 40px minmax(0, 1fr); }
+  .memo2 { position: relative; top: auto; right: auto; width: auto; transform: rotate(2deg); padding: 22px 22px 24px; }
+  .memo2 .memo-t { font-size: 25px; }
+  .memo2 .memo-s { margin-bottom: 14px; }
+  .mm-heads { display: grid; grid-template-columns: 146px 40px minmax(0, 1fr); font-family: var(--hand); font-size: 13px; opacity: .65; margin-bottom: 2px; }
+  .mm-heads span:first-child { text-align: center; }
+  .mm-row { display: grid; grid-template-columns: 146px 40px minmax(0, 1fr); align-items: center; }
+  .mm-word { position: relative; text-align: center; padding: 12px 14px; }
+  .mm-word span { position: relative; z-index: 1; font-family: var(--hand); font-weight: 700; font-size: 21px; color: #5b3f7a; white-space: nowrap; }
+  .mm-word .sh-circle { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .mm-word .sh-circle path { fill: none; stroke: #5b3f7a; stroke-width: 2; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+  .mm-link { width: 44px; height: 12px; overflow: visible; }
+  .mm-link path { fill: none; stroke: #a85c8c; stroke-width: 1.8; stroke-dasharray: 4 3; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+  .mm-txt { font-family: var(--hand); font-size: 16px; line-height: 1.35; color: #3b2a00; }
+  .mm-gap { width: 146px; display: flex; justify-content: center; height: 26px; }
+  .mm-down { width: 16px; height: 26px; overflow: visible; }
+  .mm-down path { fill: none; stroke: #5b3f7a; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .smile { display: inline-block; margin-left: 6px; font-family: var(--hand); font-weight: 700; font-size: 20px; color: var(--rose); }
+  @media (max-width: 1000px) { .vrac2 { grid-template-columns: 1fr; gap: 28px; } .memo2 { max-width: 420px; transform: rotate(1.5deg); } }
+  @media (max-width: 600px) { .vrac2 .qa li { grid-template-columns: 1fr; } .memo2 { margin: 0 6px; } }
+
+  @media (max-width: 600px) {
+    .memo2 { padding: 18px 14px 20px; margin: 0 8px 0 2px; max-width: none; transform: rotate(1deg); }
+    .mm-heads, .mm-row { grid-template-columns: 100px 22px minmax(0, 1fr); }
+    .mm-gap { width: 100px; }
+    .mm-word { padding: 10px 8px; }
+    .mm-word span { font-size: 16px; }
+    .mm-link { width: 22px; }
+    .mm-txt { font-size: 14.5px; }
+  }
 </style>
 </head>
 <body data-active-tab="profil">
@@ -1008,7 +1042,7 @@
             <p>Le sens de mon travail, quelle que soit la taille du projet, est de faire rayonner les projets au-delà de l'instance prévue : des retours positifs, une image qui circule, des synergies qui se créent. Une lisibilité irréprochable du projet est essentielle pour provoquer cette énergie, en amont comme en aval. La stratégie globale donne au projet son cap, les étapes, les contraintes pendant que l'agilité est garante du maintien du cadre de référence.</p>
             <div class="l-label">Aujourd'hui, je veux changer d'échelle et être à la source d'une stratégie qui donne le cap.</div>
             <p>Après trois ans chez Cerfrance, je cherche le poste qui prolongera cette trajectoire. </p>
-            <p>Aujourd'hui, je coordonne des expertises et mobilise des parties prenantes projet par projet. Demain, je veux voir plus large et piloter une stratégie dans son ensemble : rassembler plusieurs projet au service d'une trajectoire. L'événementiel n'est pas une envie récente et représente mon ambition personnelle. D'ailleurs, j'ai déjà commencé à l'exercer à mon échelle personnelle avec Madeleine, en construisant une offre qui mobilise mon réseau et mes compétences au service d'une stratégie globale.</p>
+            <p>Aujourd'hui, je coordonne des expertises et mobilise des parties prenantes projet par projet. Demain, je veux voir plus large et piloter une stratégie dans son ensemble : rassembler plusieurs projets au service d'une trajectoire. L'événementiel n'est pas une envie récente et représente mon ambition personnelle. D'ailleurs, j'ai déjà commencé à l'exercer à mon échelle personnelle avec Madeleine, en construisant une offre qui mobilise mon réseau et mes compétences au service d'une stratégie globale.</p>
           </div>
           <div class="postit-wrap">
             <div class="postit">
@@ -1223,7 +1257,7 @@
         <p>C'est ce regard que je souhaite mettre au service des événements de NEOMA : penser chaque moment pour celui qui le vit, veillant à rendre l'expérience unique pour tous.</p>
         <h4>Un ancrage local, une capacité à changer d'échelle</h4>
         <p>Rouen est mon territoire : j’y ai étudié, travaillé et développé une connaissance concrète de ses lieux, de ses acteurs et de ses prestataires.</p>
-        <p>J’L'environnement parisien m'est également familier, lors de participation ou d'organisation d'événements.</p>
+        <p>L'environnement parisien m'est également familier, lors de participation ou d'organisation d'événements.</p>
         <p>Cette connaissance du terrain, associée à ma capacité à découvrir de nouveaux environnements, me permet d’envisager naturellement un périmètre plus éloigné comme Reims.</p>
         <h4>Nous voyons l'événementiel de la même façon</h4>
         <p>Dans votre offre, je comprends que l'événementiel est un vecteur d'incarnation du positionnement de l'école. Un événement ne se résume pas à une date dans un calendrier, il transporte le rayonnement de l'école. Il porte un message, rassemble une communauté et laisse une trace, chez ceux qui l'ont vécu comme chez ceux qui en entendent parler.</p>
@@ -1287,7 +1321,6 @@
             </ul>
           </div>
         </div>
-        <p class="corner-inline know-note">les flèches relient les points qui se répondent</p>
       </div>
 
       <div class="c-page" data-cpage="1">
@@ -1320,7 +1353,7 @@
       <div class="c-page" data-cpage="2">
         <h3 class="c-title">Objectif majeur : comprendre l’environnement</h3>
         <ul class="dash-list">
-          <li><span class="dl-t"><mark class="hl hl-p">Rencontrer l’équipe</mark></span> : compétences, appétences, expertises et complémentarités de chacun</li>
+          <li><span class="dl-t">Rencontrer l’équipe</span> : compétences, appétences, expertises et complémentarités de chacun <span class="smile" aria-hidden="true">:)</span></li>
           <li><span class="dl-t">Comprendre l’écosystème</span> : interactions services supports, clients externes, clients internes</li>
           <li><span class="dl-t">Cartographier le portefeuille</span> : événements récurrents, ponctuels, internes, externes, intercampus, institutionnels</li>
           <li><span class="dl-t">Cartographier le réseau</span> : partenaires, prestataires, institutions, entreprises et relais d’influence</li>
@@ -1329,25 +1362,36 @@
       </div>
 
       <div class="c-page" data-cpage="3">
-        <h3 class="c-title">Notes en vrac</h3>
-        <p class="c-sub">Ce qui me vient en tête quand je pense au poste.</p>
-        <aside class="memo">
-          <div class="memo-t">Mémo à retenir</div>
-          <div class="memo-s">(= points de ma vision v/s la stratégie de NEOMA)</div>
-          <ul>
-            <li><b>S</b>ens <span>↔</span> positionnement de l’école</li>
-            <li><b>L</b>ien <span>↔</span> communauté : étudiants, alumni, collaborateurs</li>
-            <li><b>I</b>mpact <span>↔</span> attractivité et rayonnement</li>
+        <h3 class="c-title">Questions à poser</h3>
+        <div class="vrac2">
+          <ul class="qa">
+            <li><span class="qa-q">Comment s’organisent les calendriers événementiels entre les 3 campus ?</span><svg class="qa-arrow" viewBox="0 0 44 16" aria-hidden="true"><path d="M2 9 C 14 4, 28 12, 40 8"/><path d="M33 3 L 41 8 L 34 13"/></svg><span class="qa-a">Les campus partenaires ont-ils des annexes événementielles pour participer ?</span></li>
+            <li><span class="qa-q">Quelles données de satisfaction existent déjà ?</span><svg class="qa-arrow" viewBox="0 0 44 16" aria-hidden="true"><path d="M2 9 C 14 4, 28 12, 40 8"/><path d="M33 3 L 41 8 L 34 13"/></svg><span class="qa-a">ROI des événements, analyses de données ?</span></li>
+            <li><span class="qa-q">Quelle est la hiérarchie des événements en termes de rayonnement ?</span><svg class="qa-arrow" viewBox="0 0 44 16" aria-hidden="true"><path d="M2 9 C 14 4, 28 12, 40 8"/><path d="M33 3 L 41 8 L 34 13"/></svg><span class="qa-a">Cet indicateur existe‑t‑il ?</span></li>
           </ul>
-          <div class="memo-f">→ chaque événement doit répondre à une question simple : pourquoi existe-t-il ?</div>
-        </aside>
-        <div class="c-h qa-h">Questions à poser</div>
-        <ul class="qa">
-          <li><span class="qa-q">Quels événements fonctionnent le mieux aujourd’hui, et pourquoi ?</span><svg class="qa-arrow" viewBox="0 0 44 16" aria-hidden="true"><path d="M2 9 C 14 4, 28 12, 40 8"/><path d="M33 3 L 41 8 L 34 13"/></svg><span class="qa-a">fréquentation ? satisfaction ? retombées ?</span></li>
-          <li><span class="qa-q">Quelles données de satisfaction existent déjà ?</span><svg class="qa-arrow" viewBox="0 0 44 16" aria-hidden="true"><path d="M2 9 C 14 4, 28 12, 40 8"/><path d="M33 3 L 41 8 L 34 13"/></svg><span class="qa-a">indicateurs ? enquêtes ?</span></li>
-          <li><span class="qa-q">Quels prestataires et partenaires sont déjà référencés ?</span><svg class="qa-arrow" viewBox="0 0 44 16" aria-hidden="true"><path d="M2 9 C 14 4, 28 12, 40 8"/><path d="M33 3 L 41 8 L 34 13"/></svg><span class="qa-a">contrats en cours ? fichier partenaires ?</span></li>
-          <li><span class="qa-q">Comment se répartissent les rôles entre les campus ?</span><svg class="qa-arrow" viewBox="0 0 44 16" aria-hidden="true"><path d="M2 9 C 14 4, 28 12, 40 8"/><path d="M33 3 L 41 8 L 34 13"/></svg><span class="qa-a">organisation par campus ? relais locaux ?</span></li>
-        </ul>
+          <aside class="memo memo2">
+            <div class="memo-t">Mémo à retenir</div>
+            <div class="memo-s">(= points de ma vision v/s la stratégie de NEOMA)</div>
+            <div class="mm-heads"><span>ma vision</span><span></span><span>la stratégie de NEOMA</span></div>
+            <div class="mm-row">
+              <div class="mm-word"><svg class="sh-circle" viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M22 50 C 10 20, 140 4, 184 26 C 206 40, 184 70, 108 74 C 44 78, 4 64, 12 42 C 18 26, 58 14, 100 12"/></svg><span>du sens</span></div>
+              <svg class="mm-link" viewBox="0 0 60 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 7 C 18 3, 40 11, 58 7"/></svg>
+              <div class="mm-txt">positionnement et stratégie de l’école</div>
+            </div>
+            <div class="mm-gap"><svg class="mm-down" viewBox="0 0 20 30" aria-hidden="true"><path d="M10 2 C 8 10, 12 18, 10 26"/><path d="M4 19 L 10 27 L 16 19"/></svg></div>
+            <div class="mm-row">
+              <div class="mm-word"><svg class="sh-circle" viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M30 18 C 80 2, 196 10, 190 44 C 186 70, 60 80, 22 62 C -2 50, 8 24, 54 14 C 70 11, 86 10, 104 11"/></svg><span>du lien</span></div>
+              <svg class="mm-link" viewBox="0 0 60 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 7 C 18 3, 40 11, 58 7"/></svg>
+              <div class="mm-txt">communauté : étudiants, alumni, collaborateurs</div>
+            </div>
+            <div class="mm-gap"><svg class="mm-down" viewBox="0 0 20 30" aria-hidden="true"><path d="M10 2 C 8 10, 12 18, 10 26"/><path d="M4 19 L 10 27 L 16 19"/></svg></div>
+            <div class="mm-row">
+              <div class="mm-word"><svg class="sh-circle" viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M20 40 C 14 14, 120 2, 178 20 C 206 30, 196 66, 120 74 C 56 80, 8 70, 10 46 C 12 30, 50 16, 92 14"/></svg><span>de l’impact</span></div>
+              <svg class="mm-link" viewBox="0 0 60 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 7 C 18 3, 40 11, 58 7"/></svg>
+              <div class="mm-txt">attractivité et rayonnement</div>
+            </div>
+          </aside>
+        </div>
       </div>
 
       <div class="c-nav">
